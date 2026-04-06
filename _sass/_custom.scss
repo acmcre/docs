@@ -243,6 +243,12 @@ h1, h2, h3, h4, h5, h6 {
       height: 40px;
       width: auto;
     }
+
+    .hero-university-logo {
+      height: 84px;
+      max-width: min(92vw, 520px);
+      object-fit: contain;
+    }
   }
 
   .hero-title {

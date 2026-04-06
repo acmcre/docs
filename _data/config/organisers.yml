@@ -1,7 +1,7 @@
 # Host institution (appears in header, footer, flyer)
 host:
   name: "NMIMS Indore"
-  logo: "/assets/images/organisers/host-logo.svg"
+  logo: "/assets/images/organisers/nmims-indore-logo.png"
   url: "https://nmims.edu"
 
 # Partner organisations (appear in header, footer, flyer)

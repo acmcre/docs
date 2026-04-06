@@ -7,6 +7,11 @@ layout: default
 
 <section class="hero">
   <div class="container text-center">
+    <div class="hero-logos" aria-label="Host institution logo">
+      <a href="{{ site.data.config.organisers.host.url }}" target="_blank" rel="noopener">
+        <img src="{{ site.data.config.organisers.host.logo | relative_url }}" alt="{{ site.data.config.organisers.host.name }}" class="hero-university-logo" loading="lazy">
+      </a>
+    </div>
     <h1 class="hero-title">{{ site.data.config.site.event_name }}</h1>
     <p class="hero-date">{{ strings.home.date_display }}</p>
     <p class="hero-location">{{ site.data.config.site.location.name }}</p>
