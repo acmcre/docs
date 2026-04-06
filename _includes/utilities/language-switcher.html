@@ -1,0 +1,47 @@
+{% comment %}
+Language Switcher Component
+Renders a dropdown to switch between available languages.
+
+Feature toggle: Only renders if site.features.i18n is true.
+
+Data:
+  site.data.strings (iterated to find available languages)
+  page.alternate (object mapping lang codes to URLs)
+    Example: { en: "/", hi: "/hi/" }
+
+Strings: site.data.strings[lang].language_switcher
+  - Keys matching language codes (en, hi, etc.) with display names
+
+Behavior:
+  - Shows current language as active (non-clickable)
+  - Shows other languages as links if page.alternate[lang] exists
+  - Hidden entirely if site.features.i18n is false
+{% endcomment %}
+
+{% if site.features.i18n %}
+{% assign current_lang = page.lang | default: site.lang | default: "en" %}
+{% assign strings = site.data.strings[current_lang] %}
+
+<div class="language-switcher dropdown ms-lg-3">
+  <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ strings.language_switcher[current_lang] }}
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+    {% for lang_file in site.data.strings %}
+      {% assign lang_code = lang_file[0] %}
+      {% assign lang_strings = lang_file[1] %}
+      <li>
+        {% if lang_code == current_lang %}
+          <span class="dropdown-item active" aria-current="true">
+            {{ lang_strings.language_switcher[lang_code] }}
+          </span>
+        {% elsif page.alternate and page.alternate[lang_code] %}
+          <a class="dropdown-item" href="{{ page.alternate[lang_code] | relative_url }}">
+            {{ lang_strings.language_switcher[lang_code] }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

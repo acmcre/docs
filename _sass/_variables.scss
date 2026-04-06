@@ -1,0 +1,61 @@
+// ACM CRE Visual Identity
+// Design: dev-docs/plans/2026-03-04-visual-identity-design.md
+
+// Color tokens
+$color-text: #2D2D2D;
+$color-text-muted: #6B6B6B;
+$color-text-subtle: #9A9A9A;
+$color-bg: #FFFFFF;
+$color-bg-subtle: #F7F7F7;
+$color-accent: #C45C3E;
+$color-accent-hover: #A34D33;
+$color-accent-light: rgba(196, 92, 62, 0.08);
+$color-border: #E5E5E5;
+
+// Session type colors
+$color-keynote: #C45C3E;
+$color-workshop: #2A7B72;
+$color-discussion: #5B7A9D;
+$color-ceremony: #C08B32;
+$color-break: #9A9A9A;
+
+// Bootstrap overrides
+$primary: $color-accent;
+$secondary: $color-text-muted;
+$light: $color-bg-subtle;
+$dark: $color-text;
+$body-color: $color-text;
+$body-bg: $color-bg;
+
+// Typography
+$font-family-sans-serif: "Outfit", system-ui, -apple-system, sans-serif;
+$headings-font-weight: 600;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+
+// Spacing tokens
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 2rem;
+$space-lg: 3rem;
+$space-xl: 4rem;
+
+// Layout
+$container-max-width: 960px;
+$text-max-width: 65ch;
+
+// Border radius (sharp corners)
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+// Links
+$link-color: $color-accent;
+$link-hover-color: $color-accent-hover;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+// Focus ring (accessibility)
+$focus-ring-width: 0.25rem;
+$focus-ring-opacity: 0.25;
+$focus-ring-color: rgba($color-accent, $focus-ring-opacity);

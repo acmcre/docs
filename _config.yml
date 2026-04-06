@@ -1,0 +1,57 @@
+title: "ACM COMPUTE Regional"
+description: "Regional event for computing educators and researchers"
+url: "https://acm-cre.github.io"
+baseurl: ""
+
+lang: en
+
+# Feature toggles (set to false to disable)
+features:
+  i18n: true        # Multi-language support and language switcher
+  sponsors: true    # Sponsors page and section
+  flyer: true       # Flyer page and spread-the-word flyer section
+  venue: true       # Venue page
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+  quiet_deps: true
+  silence_deprecations:
+    - import
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/images/og-default.png
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - dev-docs/

@@ -1,0 +1,81 @@
+{% comment %}
+Schedule Table Component
+Renders the event schedule as a responsive table.
+
+Data:
+  site.data.content.schedule (array of sessions)
+    - time: "09:00" (required)
+    - end_time: "10:00" (optional)
+    - title: "Session Title" (required)
+    - type: keynote|workshop|discussion|break|ceremony (required)
+    - speaker: "speaker-id" (optional, single speaker)
+    - speakers: ["id1", "id2"] (optional, multiple speakers)
+    - facilitators: ["id1", "id2"] (optional, facilitator IDs)
+    - description: "Short description" (optional)
+
+  site.data.content.speakers[lang] (for speaker lookup)
+    - keynote, facilitators, organisers arrays with {id, name, affiliation}
+
+Strings: site.data.strings[lang].schedule
+  - time_column: column header for time
+  - session_column: column header for session
+{% endcomment %}
+
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+{% assign strings = site.data.strings[lang] %}
+{% assign speakers_data = site.data.content.speakers[lang] %}
+{% assign all_speakers = speakers_data.keynote | concat: speakers_data.facilitators | concat: speakers_data.organisers %}
+
+<div class="table-responsive">
+  <table class="table schedule-table">
+    <thead>
+      <tr>
+        <th scope="col">{{ strings.schedule.time_column }}</th>
+        <th scope="col">{{ strings.schedule.session_column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for session in site.data.content.schedule %}
+        <tr>
+          <td class="session-time">
+            {{ session.time }}{% if session.end_time %} – {{ session.end_time }}{% endif %}
+          </td>
+          <td>
+            <span class="session-type session-type--{{ session.type }}">
+              {{ session.type }}
+            </span>
+            <strong class="d-block mt-1">{{ session.title }}</strong>
+            {% if session.description %}
+              <small class="text-muted">{{ session.description }}</small>
+            {% endif %}
+            {% if session.speaker %}
+              {% assign speaker = all_speakers | where: "id", session.speaker | first %}
+              {% if speaker %}
+                <small class="d-block text-muted">{{ speaker.name }}, {{ speaker.affiliation }}</small>
+              {% endif %}
+            {% endif %}
+            {% if session.speakers %}
+              {% for speaker_id in session.speakers %}
+                {% assign speaker = all_speakers | where: "id", speaker_id | first %}
+                {% if speaker %}
+                  <small class="d-block text-muted">{{ speaker.name }}, {{ speaker.affiliation }}</small>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if session.facilitators %}
+              <small class="d-block text-muted">
+                Facilitators:
+                {% for facilitator_id in session.facilitators %}
+                  {% assign facilitator = all_speakers | where: "id", facilitator_id | first %}
+                  {% if facilitator %}
+                    {{ facilitator.name }}{% unless forloop.last %}, {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </small>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

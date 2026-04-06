@@ -1,0 +1,53 @@
+// Bootstrap 5.2.3 Integration
+// Import order matters: functions → our variables → bootstrap variables → rest
+
+// 1. Functions (required for variable processing)
+@import "bootstrap-5.2.3/functions";
+
+// 2. Our variable overrides (must come before Bootstrap variables)
+@import "variables";
+
+// 3. Bootstrap variables and maps
+@import "bootstrap-5.2.3/variables";
+@import "bootstrap-5.2.3/maps";
+@import "bootstrap-5.2.3/mixins";
+@import "bootstrap-5.2.3/utilities";
+
+// 4. Bootstrap root (CSS custom properties)
+@import "bootstrap-5.2.3/root";
+
+// 5. Bootstrap components
+@import "bootstrap-5.2.3/reboot";
+@import "bootstrap-5.2.3/type";
+@import "bootstrap-5.2.3/images";
+@import "bootstrap-5.2.3/containers";
+@import "bootstrap-5.2.3/grid";
+@import "bootstrap-5.2.3/tables";
+@import "bootstrap-5.2.3/forms";
+@import "bootstrap-5.2.3/buttons";
+@import "bootstrap-5.2.3/transitions";
+@import "bootstrap-5.2.3/dropdown";
+@import "bootstrap-5.2.3/button-group";
+@import "bootstrap-5.2.3/nav";
+@import "bootstrap-5.2.3/navbar";
+@import "bootstrap-5.2.3/card";
+@import "bootstrap-5.2.3/accordion";
+@import "bootstrap-5.2.3/breadcrumb";
+@import "bootstrap-5.2.3/pagination";
+@import "bootstrap-5.2.3/badge";
+@import "bootstrap-5.2.3/alert";
+@import "bootstrap-5.2.3/progress";
+@import "bootstrap-5.2.3/list-group";
+@import "bootstrap-5.2.3/close";
+@import "bootstrap-5.2.3/toasts";
+@import "bootstrap-5.2.3/modal";
+@import "bootstrap-5.2.3/tooltip";
+@import "bootstrap-5.2.3/popover";
+@import "bootstrap-5.2.3/carousel";
+@import "bootstrap-5.2.3/spinners";
+@import "bootstrap-5.2.3/offcanvas";
+@import "bootstrap-5.2.3/placeholders";
+
+// 6. Helpers and utilities
+@import "bootstrap-5.2.3/helpers";
+@import "bootstrap-5.2.3/utilities/api";
