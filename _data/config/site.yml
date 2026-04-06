@@ -1,12 +1,12 @@
-event_name: "ACM COMPUTE Regional Event - NMIMS Indore"
+event_name: "ACM COMPUTE Regional Event - SVKM's NMIMS Indore"
 tagline: "For Computing Educators & Researchers"
 date: "2026-03-21"
 date_display: "Saturday, March 21, 2026"
 time: "9:30 AM - 6:00 PM"
 
 location:
-  name: "NMIMS Indore"
-  address: "NMIMS Indore Campus, Indore, Madhya Pradesh, India"
+  name: "SVKM's NMIMS Indore"
+  address: "SVKM's NMIMS Indore Campus, Indore, Madhya Pradesh, India"
   url: "https://nmims.edu"
   map_url: "https://maps.google.com/?q=NMIMS+Indore+Campus"
   map_embed_url: ""

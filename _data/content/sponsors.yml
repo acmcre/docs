@@ -6,7 +6,7 @@ sponsorship_email: "info@nmims.edu"
 tiers:
   - name: Partners
     sponsors:
-      - name: "NMIMS Indore"
+      - name: "SVKM's NMIMS Indore"
         logo: "/assets/images/organisers/host-logo.svg"
         url: "https://nmims.edu"
       - name: "ACM iSIGCSE"
