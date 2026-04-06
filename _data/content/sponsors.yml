@@ -8,7 +8,7 @@ tiers:
     sponsors:
       - name: "SVKM's NMIMS Indore"
         logo: "/assets/images/organisers/host-logo.svg"
-        url: "https://nmims.edu"
+        url: "https://indore.nmims.edu/"
       - name: "ACM iSIGCSE"
         logo: "/assets/images/organisers/acm-isigcse-768x256.jpg"
         url: "https://isigcse.acm.org"

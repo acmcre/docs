@@ -2,7 +2,7 @@
 host:
   name: "SVKM's NMIMS Indore"
   logo: "/assets/images/organisers/nmims-indore-logo.png"
-  url: "https://nmims.edu"
+  url: "https://indore.nmims.edu/"
 
 # Partner organisations (appear in header, footer, flyer)
 # ACM logos are constant across all CRE events

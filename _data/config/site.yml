@@ -7,7 +7,7 @@ time: "9:30 AM - 6:00 PM"
 location:
   name: "SVKM's NMIMS Indore"
   address: "SVKM's NMIMS Indore Campus, Indore, Madhya Pradesh, India"
-  url: "https://nmims.edu"
+  url: "https://indore.nmims.edu/"
   map_url: "https://maps.google.com/?q=NMIMS+Indore+Campus"
   map_embed_url: ""
 
@@ -19,13 +19,13 @@ accommodation:
 
 registration:
   free: true
-  form_url: "https://nmims.edu/"
+  form_url: "https://indore.nmims.edu/"
 
 social:
   email: "info@nmims.edu"
   isigcse_website: "https://isigcse.acm.org/home/"
   isigcse_twitter: "https://x.com/isigcse"
-  host_website: "https://nmims.edu"
+  host_website: "https://indore.nmims.edu/"
   host_twitter: ""
   host_instagram: ""
   icons:
