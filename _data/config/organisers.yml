@@ -1,8 +1,8 @@
 # Host institution (appears in header, footer, flyer)
 host:
-  name: "Your University"
+  name: "NMIMS Indore"
   logo: "/assets/images/organisers/host-logo.svg"
-  url: "https://example.edu"
+  url: "https://nmims.edu"
 
 # Partner organisations (appear in header, footer, flyer)
 # ACM logos are constant across all CRE events

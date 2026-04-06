@@ -26,9 +26,9 @@ schedule:
 
 people:
   heading: "लोग"
-  keynote: "मुख्य वक्ता"
-  facilitators: "कार्यशाला संचालक"
-  organisers: "आयोजन समिति"
+  keynote: "वक्ता"
+  facilitators: "सत्र संचालक"
+  organisers: "आयोजन टीम"
 
 venue:
   heading: "स्थान"

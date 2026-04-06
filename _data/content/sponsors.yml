@@ -1,17 +1,14 @@
 # Sponsors for ACM COMPUTE Regional Event
 
 seeking_sponsors: true
-sponsorship_email: "sponsors@example.edu"
+sponsorship_email: "info@nmims.edu"
 
 tiers:
-  - name: Sponsors
+  - name: Partners
     sponsors:
-      - name: "Example Sponsor"
-        logo: "/assets/images/sponsors/sponsor-placeholder.svg"
-        url: "https://example.com"
-
-  - name: Academic Partners
-    sponsors:
-      - name: "Your University"
+      - name: "NMIMS Indore"
         logo: "/assets/images/organisers/host-logo.svg"
-        url: "https://example.edu"
+        url: "https://nmims.edu"
+      - name: "ACM iSIGCSE"
+        logo: "/assets/images/organisers/acm-isigcse-768x256.jpg"
+        url: "https://isigcse.acm.org"

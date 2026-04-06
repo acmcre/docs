@@ -49,6 +49,9 @@ Behavior:
           {% endif %}
           <h3 class="speaker-name h6">{{ speaker.name }}</h3>
           <p class="speaker-affiliation mb-0">{{ speaker.affiliation }}</p>
+          {% if speaker.linkedin %}
+            <p class="mb-0 mt-1"><a href="{{ speaker.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></p>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
@@ -78,6 +81,9 @@ Behavior:
           {% endif %}
           <h3 class="speaker-name h6">{{ speaker.name }}</h3>
           <p class="speaker-affiliation mb-0">{{ speaker.affiliation }}</p>
+          {% if speaker.linkedin %}
+            <p class="mb-0 mt-1"><a href="{{ speaker.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></p>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
@@ -107,6 +113,9 @@ Behavior:
           {% endif %}
           <h3 class="speaker-name h6">{{ speaker.name }}</h3>
           <p class="speaker-affiliation mb-0">{{ speaker.affiliation }}</p>
+          {% if speaker.linkedin %}
+            <p class="mb-0 mt-1"><a href="{{ speaker.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></p>
+          {% endif %}
         </div>
       </div>
     {% endfor %}

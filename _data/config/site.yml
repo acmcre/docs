@@ -1,14 +1,14 @@
-event_name: "ACM COMPUTE Regional Event"
+event_name: "ACM COMPUTE Regional Event - NMIMS Indore"
 tagline: "For Computing Educators & Researchers"
 date: "2026-03-21"
 date_display: "Saturday, March 21, 2026"
 time: "9:30 AM - 6:00 PM"
 
 location:
-  name: "Your University"
-  address: "123 University Street, City, State 12345"
-  url: "https://example.edu"
-  map_url: "https://maps.app.goo.gl/example"
+  name: "NMIMS Indore"
+  address: "NMIMS Indore Campus, Indore, Madhya Pradesh, India"
+  url: "https://nmims.edu"
+  map_url: "https://maps.google.com/?q=NMIMS+Indore+Campus"
   map_embed_url: ""
 
 accommodation:
@@ -19,21 +19,21 @@ accommodation:
 
 registration:
   free: true
-  form_url: "https://example.com/register"
+  form_url: "https://nmims.edu/"
 
 social:
-  email: "contact@example.edu"
+  email: "info@nmims.edu"
   isigcse_website: "https://isigcse.acm.org/home/"
   isigcse_twitter: "https://x.com/isigcse"
-  host_website: "https://example.edu"
-  host_twitter: "https://x.com/YourUniversity"
-  host_instagram: "https://www.instagram.com/youruniversity/"
+  host_website: "https://nmims.edu"
+  host_twitter: ""
+  host_instagram: ""
   icons:
     github: "/assets/images/social/github.svg"
 
 sponsors:
   seeking: true
-  form_url: "https://tally.so/r/sponsorship-form-id"
+  form_url: "mailto:info@nmims.edu?subject=Sponsorship%20Inquiry"
 
 # logo: "/assets/images/logo.png"  # Using text brand "ACM CRE"
 # hero_image: "/assets/images/hero.jpg"  # Using typography-focused hero

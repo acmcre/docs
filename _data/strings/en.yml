@@ -26,9 +26,9 @@ schedule:
 
 people:
   heading: "People"
-  keynote: "Keynote Speaker"
-  facilitators: "Workshop Facilitators"
-  organisers: "Organising Committee"
+  keynote: "Speakers"
+  facilitators: "Session Facilitators"
+  organisers: "Organising Team"
 
 venue:
   heading: "Venue"

@@ -14,23 +14,25 @@
   title: "Opening"
   type: keynote
   description: "Introduction to COMPUTE and regional events, and the day's agenda"
+  speakers:
+    - mrityunjay-kumar
+    - prajish-prasad
 
 - time: "10:30"
   end_time: "11:30"
   title: "Discussion Forum"
   type: discussion
-  description: "Facilitated discussion on CS education topics. Attendees share challenges and ideas in small groups."
-  facilitators:
-    - facilitator-1
-    - facilitator-2
+  description: "Discussion on CS education topics with practical perspectives from invited speakers."
+  speakers:
+    - mrityunjay-kumar
+    - prajish-prasad
 
 - time: "11:30"
   end_time: "13:30"
   title: "Educator Workshop"
   type: workshop
   description: "Hands-on workshop for CS educators to develop teaching ideas and experience reports."
-  facilitators:
-    - facilitator-1
+  speaker: prajish-prasad
 
 - time: "13:30"
   end_time: "15:00"
@@ -43,8 +45,7 @@
   title: "Researcher Workshop"
   type: workshop
   description: "Workshop for CS education researchers working on paper submissions or study designs."
-  facilitators:
-    - facilitator-2
+  speaker: mrityunjay-kumar
 
 - time: "17:30"
   end_time: "18:00"
