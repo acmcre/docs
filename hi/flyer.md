@@ -32,7 +32,7 @@ permalink: /hi/flyer/
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">शुल्क</span>
-    <span class="flyer-detail-value">{% if site.data.config.site.registration.free %}निःशुल्क पंजीकरण{% else %}पंजीकरण खुला है{% endif %}</span>
+    <span class="flyer-detail-value">{% if site.data.config.site.registration and site.data.config.site.registration.free %}निःशुल्क पंजीकरण{% else %}पंजीकरण खुला है{% endif %}</span>
   </div>
 </div>
 
