@@ -50,7 +50,7 @@ permalink: /flyer/
 <div class="flyer-cta">
   <div class="flyer-cta-left">
     <p class="flyer-cta-text">Register Now</p>
-    <p class="flyer-url">{{ '/register/' | absolute_url }}</p>
+    <p class="flyer-url">{{ '/register/' | relative_url }}</p>
 {% if site.features.sponsors %}
     <div class="flyer-sponsor">
       <span>Sponsored by</span>

@@ -50,7 +50,7 @@ permalink: /hi/flyer/
 <div class="flyer-cta">
   <div class="flyer-cta-left">
     <p class="flyer-cta-text">अभी पंजीकरण करें</p>
-    <p class="flyer-url">{{ '/hi/register/' | absolute_url }}</p>
+    <p class="flyer-url">{{ '/hi/register/' | relative_url }}</p>
 {% if site.features.sponsors %}
     <div class="flyer-sponsor">
       <span>प्रायोजक</span>
