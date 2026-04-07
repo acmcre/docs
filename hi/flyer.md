@@ -20,7 +20,7 @@ permalink: /hi/flyer/
 <div class="flyer-details">
   <div class="flyer-detail">
     <span class="flyer-detail-label">तिथि</span>
-    <span class="flyer-detail-value">शनिवार, 21 मार्च 2026</span>
+    <span class="flyer-detail-value">शुक्रवार, 1 मई 2026</span>
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">समय</span>

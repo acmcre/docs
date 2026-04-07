@@ -14,10 +14,10 @@ nav:
 
 home:
   register_cta: "Register Now"
-  date_display: "Saturday, March 21, 2026"
-  date_month: "MAR"
-  date_day: "21"
-  date_weekday: "SAT"
+  date_display: "Friday, May 1, 2026"
+  date_month: "MAY"
+  date_day: "1"
+  date_weekday: "FRI"
 
 schedule:
   heading: "Schedule"

@@ -20,7 +20,7 @@ permalink: /flyer/
 <div class="flyer-details">
   <div class="flyer-detail">
     <span class="flyer-detail-label">Date</span>
-    <span class="flyer-detail-value">Saturday, 21 March 2026</span>
+    <span class="flyer-detail-value">Friday, 1 May 2026</span>
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">Time</span>

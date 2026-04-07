@@ -14,10 +14,10 @@ nav:
 
 home:
   register_cta: "अभी पंजीकरण करें"
-  date_display: "शनिवार, 21 मार्च, 2026"
-  date_month: "मार्च"
-  date_day: "21"
-  date_weekday: "शनि"
+  date_display: "शुक्रवार, 1 मई, 2026"
+  date_month: "मई"
+  date_day: "1"
+  date_weekday: "शुक्र"
 
 schedule:
   heading: "कार्यक्रम"
