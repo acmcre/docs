@@ -13,18 +13,18 @@ permalink: /flyer/
 </div>
 
 <div class="flyer-header">
-  <h1 class="flyer-title">ACM COMPUTE<br>Regional Event</h1>
-  <p class="flyer-subtitle">Connecting CS Educators & Researchers</p>
+  <h1 class="flyer-title">{{ site.data.config.site.event_name }}</h1>
+  <p class="flyer-subtitle">{{ site.data.config.site.tagline }}</p>
 </div>
 
 <div class="flyer-details">
   <div class="flyer-detail">
     <span class="flyer-detail-label">Date</span>
-    <span class="flyer-detail-value">Friday, 1 May 2026</span>
+    <span class="flyer-detail-value">{{ site.data.config.site.date_display }}</span>
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">Time</span>
-    <span class="flyer-detail-value">9:30 AM – 6:00 PM</span>
+    <span class="flyer-detail-value">{{ site.data.config.site.time }}</span>
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">Venue</span>
@@ -32,7 +32,14 @@ permalink: /flyer/
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">Fee</span>
-    <span class="flyer-detail-value">Free Registration</span>
+    {% if site.data.config.site.registration and site.data.config.site.registration.free %}
+      {% assign fee_text = "Free Registration" %}
+    {% elsif site.data.config.site.registration and site.data.config.site.registration.form_url %}
+      {% assign fee_text = "Registration Open" %}
+    {% else %}
+      {% assign fee_text = "See website for registration details" %}
+    {% endif %}
+    <span class="flyer-detail-value">{{ fee_text }}</span>
   </div>
 </div>
 
@@ -50,7 +57,7 @@ permalink: /flyer/
 <div class="flyer-cta">
   <div class="flyer-cta-left">
     <p class="flyer-cta-text">Register Now</p>
-    <p class="flyer-url">acm-cre.github.io/register</p>
+    <p class="flyer-url">{{ '/register/' | relative_url }}</p>
 {% if site.features.sponsors %}
     <div class="flyer-sponsor">
       <span>Sponsored by</span>
