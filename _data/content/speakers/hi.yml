@@ -9,13 +9,12 @@ keynote:
     name: "Prajish Prasad"
     affiliation: "Assistant Professor, Department of Computing and Data Sciences, FLAME University, Pune"
 
-  - id: shruti-sharma
-    name: "Shruti Sharma"
-    affiliation: "NMIMS Indore"
-
 facilitators: []
 
 organisers:
   - id: nmims-indore-team
     name: "SVKM's NMIMS Indore Team"
     affiliation: "SVKM's NMIMS Indore"
+  - id: shruti-sharma
+    name: "Shruti Sharma"
+    affiliation: "NMIMS Indore"
