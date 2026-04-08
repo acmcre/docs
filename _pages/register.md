@@ -32,7 +32,6 @@ alternate:
       <img src="{{ site.data.config.site.registration.payment_qr_url }}" alt="Kotak Mahindra Bank Mumbai payment QR code" style="max-width: 340px; width: 100%; height: auto;">
     </div>
 
-    {% include components/embed-form.html url=site.data.config.site.registration.form_url %}
   </div>
 </div>
 
