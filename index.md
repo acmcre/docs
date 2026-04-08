@@ -45,8 +45,8 @@ alternate:
       <div class="col-md-4">
         <div class="card h-100">
           <div class="card-body">
-            <h3 class="h5">Hands-on Workshops</h3>
-            <p class="mb-0">Two dedicated sessions—one for educators, one for researchers. Group-based, practical work on your own ideas with guidance from experienced facilitators.</p>
+            <h3 class="h5">Hands on workshop sessions</h3>
+            <p class="mb-0">Across multiple sessions, you will work in group settings to move from Idea to Structure and end the day with a presentation of your idea and a research plan.</p>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ alternate:
           <li class="mb-2"><strong>Date:</strong> {{ site.data.config.site.date_display }}</li>
           <li class="mb-2"><strong>Time:</strong> {{ site.data.config.site.time }}</li>
           <li class="mb-2"><strong>Venue:</strong> <a href="{{ site.data.config.site.location.url }}" target="_blank" rel="noopener">{{ site.data.config.site.location.name }}</a></li>
-          <li class="mb-2"><strong>Registration:</strong> Free</li>
+          <li class="mb-2"><strong>Registration Fee:</strong> ₹300</li>
         </ul>
         <a href="{{ '/register/' | relative_url }}" class="btn btn-primary btn-lg">Register Now</a>
       </div>
@@ -79,7 +79,7 @@ alternate:
         <div class="card bg-subtle">
           <div class="card-body">
             <h3 class="h5">A Tight, Focused Day</h3>
-            <p>This is a packed 8-hour program. There are no formal tea breaks—tea and snacks will be available during sessions, grab and head back. Networking happens before the start, during lunch, and after closing.</p>
+            <p>This is a focused 8-hour program that includes short breaks and lunch. Break windows also host pre-scheduled 1-1 mentoring sessions so participants can get targeted guidance while continuing group-based work through the day.</p>
             <p class="mb-0"><a href="{{ '/schedule/' | relative_url }}">View full schedule →</a></p>
           </div>
         </div>

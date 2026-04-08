@@ -46,8 +46,8 @@ alternate:
       <div class="col-md-4">
         <div class="card h-100">
           <div class="card-body">
-            <h3 class="h5">व्यावहारिक कार्यशालाएं</h3>
-            <p class="mb-0">दो समर्पित सत्र—एक शिक्षकों के लिए और एक शोधकर्ताओं के लिए। विषय-निष्णातों के मार्गदर्शन में अपने विचारों को मिलकर आगे बढ़ाएँ।</p>
+            <h3 class="h5">हैंड्स-ऑन वर्कशॉप सत्र</h3>
+            <p class="mb-0">कई सत्रों में आप समूह में काम करते हुए Idea से Structure तक जाएँगे और दिन के अंत में अपने विचार और रिसर्च योजना की प्रस्तुति देंगे।</p>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@ alternate:
           <li class="mb-2"><strong>तारीख:</strong> {{ site.data.config.site.date_display }}</li>
           <li class="mb-2"><strong>समय:</strong> {{ site.data.config.site.time }}</li>
           <li class="mb-2"><strong>स्थान:</strong> <a href="{{ site.data.config.site.location.url }}" target="_blank" rel="noopener">{{ site.data.config.site.location.name }}</a></li>
-          <li class="mb-2"><strong>पंजीकरण:</strong> निःशुल्क</li>
+          <li class="mb-2"><strong>पंजीकरण शुल्क:</strong> ₹300</li>
         </ul>
         <a href="{{ '/hi/register/' | relative_url }}" class="btn btn-primary btn-lg">अभी पंजीकरण करें</a>
       </div>
@@ -80,7 +80,7 @@ alternate:
         <div class="card bg-subtle">
           <div class="card-body">
             <h3 class="h5">एक व्यस्त, केंद्रित दिन</h3>
-            <p>यह 8 घंटे का व्यस्त कार्यक्रम है। कोई औपचारिक चाय-विराम नहीं होगा—सत्रों के दौरान चाय और नाश्ता उपलब्ध रहेगा; आप लेकर फिर सत्र में लौट सकते हैं।</p>
+            <p>यह 8 घंटे का केंद्रित कार्यक्रम है जिसमें छोटे ब्रेक और लंच शामिल हैं। ब्रेक स्लॉट्स में पूर्व-निर्धारित 1-1 मेंटरिंग सत्र भी होंगे, ताकि समूह-आधारित कार्य के साथ प्रतिभागियों को लक्षित मार्गदर्शन मिल सके।</p>
             <p class="mb-0"><a href="{{ '/hi/schedule/' | relative_url }}">पूरा कार्यक्रम देखें →</a></p>
           </div>
         </div>

@@ -13,6 +13,6 @@ alternate:
 
 <h1 class="mb-4">{{ strings.people.heading }}</h1>
 
-{% include components/speaker-list.html %}
+<p class="lead mb-0">TBD</p>
 
 </div>

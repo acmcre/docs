@@ -48,7 +48,7 @@ alternate:
 
   <h4 class="h6">{{ strings.spread_the_word.email_subject }}</h4>
   <div class="position-relative">
-    <pre id="email-subject">Invitation: {{ site.data.config.site.event_name }} – Free Registration Open</pre>
+    <pre id="email-subject">Invitation: {{ site.data.config.site.event_name }} – Registration Open</pre>
     <button class="btn btn-sm btn-outline-secondary copy-btn position-absolute top-0 end-0 m-2"
             data-copy-target="email-subject"
             data-copied-text="{{ strings.spread_the_word.copied }}">
@@ -66,9 +66,9 @@ Date: {{ site.data.config.site.date_display }}
 Time: {{ site.data.config.site.time }}
 Venue: {{ site.data.config.site.location.name }}
 
-The day includes a keynote, a panel discussion on CS education, hands-on workshops, and time to connect with peers. Registration is free.
+The day includes group-based sessions from Idea to Structure, mentoring breaks, and a final presentation of your idea and research plan.
 
-Details and registration: {{ site.url }}/register/
+Details and registration: {{ '/register/' | absolute_url }}
 
 Best regards,
 [Your name]</pre>
@@ -91,9 +91,9 @@ Best regards,
 {{ site.data.config.site.date_display }}
 {{ site.data.config.site.location.name }}
 
-A day for CS educators and researchers: keynote, panel discussion, workshops, and peer connections.
+A day for CS educators and researchers: idea-to-structure workshop sessions, mentoring breaks, and peer connections.
 
-Free registration: {{ site.url }}/register/
+Register here: {{ '/register/' | absolute_url }}
 
 #CSEducation #ACMIndia</pre>
     <button class="btn btn-sm btn-outline-secondary copy-btn position-absolute top-0 end-0 m-2"
@@ -113,12 +113,13 @@ Hosted by {{ site.data.config.organisers.host.name }} and ACM India iSIGCSE.
 {{ site.data.config.site.location.name }}
 
 The programme includes:
-– Keynote talk
-– Panel discussion on CS education
-– Hands-on workshops for educators and researchers
-– Time to connect with peers from across the region
+– Session 1: Ideas that work
+– Session 2: Ideas to Structure
+– Session 3: Structure to Paper
+– Session 4: Presentations and wrap-up
+– Breaks with pre-scheduled 1-1 mentoring
 
-Registration is free and open now: {{ site.url }}/register/
+Registration is open now: {{ '/register/' | absolute_url }}
 
 #CSEducation #ACMIndia</pre>
     <button class="btn btn-sm btn-outline-secondary copy-btn position-absolute top-0 end-0 m-2"

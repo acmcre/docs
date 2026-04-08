@@ -2,7 +2,7 @@ event_name: "ACM COMPUTE Regional Event - SVKM's NMIMS Indore"
 tagline: "For Computing Educators & Researchers"
 date: "2026-05-01"
 date_display: "Friday, May 1, 2026"
-time: "9:30 AM - 6:00 PM"
+time: "9:30 AM - 5:30 PM"
 
 location:
   name: "SVKM's NMIMS Indore"
@@ -18,7 +18,8 @@ accommodation:
   price: "Contact for rates"
 
 registration:
-  free: true
+  free: false
+  fee: "₹300"
   form_url: "https://indore.nmims.edu/"
 
 social:
