@@ -24,6 +24,14 @@ alternate:
       </a>
     </p>
 
+    <div class="alert alert-info mb-4">
+      Please complete this PHP form and enter your name in the Student Name field, CRE COMPUTE in the Event Name field, and conference registration in the Event Type field.
+    </div>
+
+    <div class="mb-4 text-center">
+      <img src="{{ site.data.config.site.registration.payment_qr_url }}" alt="Kotak Mahindra Bank Mumbai payment QR code" style="max-width: 340px; width: 100%; height: auto;">
+    </div>
+
     {% include components/embed-form.html url=site.data.config.site.registration.form_url %}
   </div>
 </div>
