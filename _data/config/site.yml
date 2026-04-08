@@ -20,7 +20,8 @@ accommodation:
 registration:
   free: false
   fee: "₹300"
-  form_url: "https://indore.nmims.edu/"
+  form_url: "https://nmims.edu/payments/final/dataFrom.php"
+  payment_qr_url: "https://github.com/user-attachments/assets/8e149961-cc97-4329-922f-61e18cb7db63"
 
 social:
   email: "info@nmims.edu"
