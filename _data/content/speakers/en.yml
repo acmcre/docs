@@ -2,7 +2,21 @@
 
 keynote: []
 
-facilitators: []
+facilitators:
+  - id: mrityunjay-kumar
+    name: "Mrityunjay Kumar"
+    affiliation: "BITS Pilani"
+    photo: "/assets/images/speakers/mrityunjay-kumar.png"
+  - id: prajish-prasad
+    name: "Prajish Prasad"
+    affiliation: "FLAME University"
+  - id: shitanshu-mishra
+    name: "Shitanshu Mishra"
+    affiliation: "UNESCO MGIEP"
+  - id: viraj-kumar
+    name: "Viraj Kumar"
+    affiliation: "IISc Bangalore"
+    photo: "/assets/images/speakers/viraj-kumar.png"
 
 organisers:
   - id: mrityunjay-kumar
@@ -14,6 +28,15 @@ organisers:
   - id: manu-awasthi
     name: "Manu Awasthi"
     affiliation: "IIT Gandhinagar"
-  - id: shruti-sharma
-    name: "Shruti Sharma"
-    affiliation: "NMIMS Indore"
+  - id: anirban-sen
+    name: "Anirban Sen"
+    affiliation: "Ashoka University"
+  - id: aalok-thakkar
+    name: "Aalok Thakkar"
+    affiliation: "Ashoka University"
+  - id: nikhil-raj
+    name: "Nikhil Raj"
+    affiliation: "Ashoka University"
+  - id: deepraj-pandey
+    name: "Deepraj Pandey"
+    affiliation: "Ashoka University"
