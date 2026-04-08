@@ -9,60 +9,60 @@
   title_hi: "पंजीकरण"
   type: break
   description: "Registration, morning tea, and networking"
-  description_hi: "पंजीकरण, सुबह की चाय और परिचय"
+  description_hi: "पंजीकरण, सुबह की चाय और नेटवर्किंग"
 
 - time: "10:00"
-  end_time: "10:30"
-  title: "Opening"
-  title_hi: "उद्घाटन"
-  type: keynote
-  description: "Introduction to COMPUTE and regional events, and the day's agenda"
-  description_hi: "COMPUTE और क्षेत्रीय कार्यक्रमों का परिचय तथा दिन का एजेंडा"
-  speakers:
-    - mrityunjay-kumar
-    - prajish-prasad
-
-- time: "10:30"
   end_time: "11:30"
-  title: "Discussion Forum"
-  title_hi: "चर्चा सत्र"
-  type: discussion
-  description: "Discussion on CS education topics with practical perspectives from invited speakers."
-  description_hi: "CS शिक्षा के विषयों पर चर्चा और आमंत्रित वक्ताओं के व्यावहारिक दृष्टिकोण।"
-  speakers:
-    - mrityunjay-kumar
-    - prajish-prasad
+  title: "Session 1: Ideas that work"
+  title_hi: "सत्र 1: प्रभावी विचार"
+  type: workshop
+  description: "Groups work on pre-selected themes to generate ideas, present to other groups, and receive feedback."
+  description_hi: "समूह पूर्व-चयनित विषयों पर विचार विकसित करते हैं, प्रस्तुत करते हैं, और अन्य समूहों से फीडबैक लेते हैं।"
 
 - time: "11:30"
+  end_time: "12:00"
+  title: "Break and mentoring session"
+  title_hi: "विराम और मेंटरिंग सत्र"
+  type: break
+  description: "Tea break and pre-scheduled 1-1 mentoring sessions."
+  description_hi: "चाय-विराम और पूर्व-निर्धारित 1-1 मेंटरिंग सत्र।"
+
+- time: "12:00"
   end_time: "13:30"
-  title: "Educator Workshop"
-  title_hi: "शिक्षक कार्यशाला"
+  title: "Session 2: Ideas to Structure"
+  title_hi: "सत्र 2: विचार से संरचना"
   type: workshop
-  description: "Hands-on workshop for CS educators to develop teaching ideas and experience reports."
-  description_hi: "CS शिक्षकों के लिए व्यवहारिक कार्यशाला, जिसमें शिक्षण विचार और अनुभव रिपोर्ट विकसित की जाएंगी।"
-  speaker: prajish-prasad
+  description: "Groups structure ideas using prompts, pair up to exchange drafts, and get feedback."
+  description_hi: "समूह प्रॉम्प्ट्स के आधार पर विचारों को संरचित करते हैं, ड्राफ्ट साझा करते हैं और फीडबैक लेते हैं।"
 
 - time: "13:30"
-  end_time: "15:00"
-  title: "Lunch"
-  title_hi: "भोजनावकाश"
+  end_time: "14:30"
+  title: "Lunch and mentoring sessions"
+  title_hi: "भोजन और मेंटरिंग सत्र"
   type: break
-  description: "Lunch and networking"
-  description_hi: "भोजन और नेटवर्किंग"
+  description: "Lunch break and pre-scheduled 1-1 mentoring sessions."
+  description_hi: "भोजनावकाश और पूर्व-निर्धारित 1-1 मेंटरिंग सत्र।"
 
-- time: "15:00"
-  end_time: "17:30"
-  title: "Researcher Workshop"
-  title_hi: "शोधकर्ता कार्यशाला"
+- time: "14:30"
+  end_time: "16:00"
+  title: "Session 3: Structure to Paper"
+  title_hi: "सत्र 3: संरचना से शोध-पत्र"
   type: workshop
-  description: "Workshop for CS education researchers working on paper submissions or study designs."
-  description_hi: "CS शिक्षा शोधकर्ताओं के लिए कार्यशाला, जिसमें पेपर सबमिशन और अध्ययन डिजाइन पर काम होगा।"
-  speaker: mrityunjay-kumar
+  description: "How to take ideas forward through research toward a paper or experience report, with group feedback."
+  description_hi: "विचारों को शोध के माध्यम से पेपर/अनुभव रिपोर्ट तक ले जाने की दिशा में कार्य और समूह फीडबैक।"
 
-- time: "17:30"
-  end_time: "18:00"
-  title: "Closing"
-  title_hi: "समापन"
+- time: "16:00"
+  end_time: "16:30"
+  title: "Break and mentoring session"
+  title_hi: "विराम और मेंटरिंग सत्र"
+  type: break
+  description: "Tea break and pre-scheduled 1-1 mentoring sessions."
+  description_hi: "चाय-विराम और पूर्व-निर्धारित 1-1 मेंटरिंग सत्र।"
+
+- time: "16:30"
+  end_time: "17:30"
+  title: "Session 4: Presentations and wrap-up"
+  title_hi: "सत्र 4: प्रस्तुतियाँ और समापन"
   type: ceremony
-  description: "Key takeaways from the event and wrap-up."
-  description_hi: "कार्यक्रम की मुख्य सीख और समापन।"
+  description: "Each group presents their idea and research design."
+  description_hi: "प्रत्येक समूह अपना विचार और शोध रूपरेखा प्रस्तुत करता है।"

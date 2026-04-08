@@ -32,7 +32,9 @@ permalink: /flyer/
   </div>
   <div class="flyer-detail">
     <span class="flyer-detail-label">Fee</span>
-    {% if site.data.config.site.registration and site.data.config.site.registration.free %}
+    {% if site.data.config.site.registration and site.data.config.site.registration.fee %}
+      {% assign fee_text = site.data.config.site.registration.fee %}
+    {% elsif site.data.config.site.registration and site.data.config.site.registration.free %}
       {% assign fee_text = "Free Registration" %}
     {% elsif site.data.config.site.registration and site.data.config.site.registration.form_url %}
       {% assign fee_text = "Registration Open" %}
