@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3"
 gem "jekyll-sass-converter", "~> 3.0"
+gem "faraday-retry"
 
 group :jekyll_plugins do
   gem "jekyll-seo-tag"
