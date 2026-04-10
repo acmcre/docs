@@ -3,20 +3,17 @@
 keynote: []
 
 facilitators:
-  - id: mrityunjay-kumar
-    name: "Mrityunjay Kumar"
-    affiliation: "BITS Pilani"
-    photo: "/assets/images/speakers/mrityunjay-kumar.png"
   - id: prajish-prasad
     name: "Prajish Prasad"
     affiliation: "FLAME University"
-  - id: shitanshu-mishra
-    name: "Shitanshu Mishra"
-    affiliation: "UNESCO MGIEP"
-  - id: viraj-kumar
-    name: "Viraj Kumar"
-    affiliation: "IISc Bangalore"
-    photo: "/assets/images/speakers/viraj-kumar.png"
+  - id: neeraj-goel
+    name: "Neeraj Goel"
+    affiliation: "IIT Ropar"
+    photo: "/assets/images/speakers/neeraj-goel.png"
+  - id: deepti-reddy
+    name: "Deepti Reddy"
+    affiliation: "IIT Bombay"
+    photo: "/assets/images/speakers/deepti-reddy.png"
 
 organisers:
   - id: mrityunjay-kumar
