@@ -16,15 +16,6 @@ facilitators:
     photo: "/assets/images/speakers/deepti-reddy.png"
 
 organisers:
-  - id: mrityunjay-kumar
-    name: "Mrityunjay Kumar"
-    affiliation: "BITS Pilani WILP"
-  - id: prajish-prasad
-    name: "Prajish Prasad"
-    affiliation: "FLAME University"
-  - id: manu-awasthi
-    name: "Manu Awasthi"
-    affiliation: "IIT Gandhinagar"
   - id: shruti-sharma
     name: "Shruti Sharma"
     affiliation: "NMIMS Indore"
