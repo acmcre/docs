@@ -16,6 +16,9 @@ facilitators:
     photo: "/assets/images/speakers/deepti-reddy.png"
 
 organisers:
+  - id: vikas-khare
+    name: "Vikas Khare"
+    affiliation: "NMIMS Indore"
   - id: shruti-sharma
     name: "Shruti Sharma"
     affiliation: "NMIMS Indore"
