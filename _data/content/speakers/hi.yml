@@ -14,6 +14,10 @@ facilitators:
     name: "Deepti Reddy"
     affiliation: "IIT Bombay"
     photo: "/assets/images/speakers/deepti-reddy.png"
+  - id: shweta-agrawal
+    name: "Shweta Agrawal"
+    affiliation: "IIST Indore"
+    # photo: "/assets/images/speakers/deepti-reddy.png"
 
 organisers:
   - id: vikas-khare
