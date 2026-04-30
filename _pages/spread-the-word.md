@@ -68,7 +68,7 @@ Venue: {{ site.data.config.site.location.name }}
 
 The day includes group-based sessions from Idea to Structure, mentoring breaks, and a final presentation of your idea and research plan.
 
-Details and registration: {{ '/register/' | absolute_url }}
+Details and registration: https://forms.gle/wwrdQNRJYpffNKtb6
 
 Best regards,
 [Your name]</pre>
@@ -93,7 +93,7 @@ Best regards,
 
 A day for CS educators and researchers: idea-to-structure workshop sessions, mentoring breaks, and peer connections.
 
-Register here: {{ '/register/' | absolute_url }}
+Register here: https://forms.gle/wwrdQNRJYpffNKtb6
 
 #CSEducation #ACMIndia</pre>
     <button class="btn btn-sm btn-outline-secondary copy-btn position-absolute top-0 end-0 m-2"
@@ -119,7 +119,7 @@ The programme includes:
 – Session 4: Presentations and wrap-up
 – Breaks with pre-scheduled 1-1 mentoring
 
-Registration is open now: {{ '/register/' | absolute_url }}
+Registration is open now: https://forms.gle/wwrdQNRJYpffNKtb6
 
 #CSEducation #ACMIndia</pre>
     <button class="btn btn-sm btn-outline-secondary copy-btn position-absolute top-0 end-0 m-2"
