@@ -21,18 +21,12 @@ alternate:
   <p>Download our event flyers to share with your network:</p>
   <div class="flyer-cards">
     <div class="flyer-card">
-      <div class="flyer-card-preview">
-        <img src="{{ '/assets/images/flyers/preview-en.png' | relative_url }}" alt="English flyer preview">
-      </div>
       <a href="{{ '/flyer/?print=1' | relative_url }}" class="btn btn-outline-primary" target="_blank" rel="noopener">
         Generate English PDF
       </a>
       <a href="{{ '/flyer/' | relative_url }}" class="flyer-card-link">{{ strings.spread_the_word.view_browser }}</a>
     </div>
     <div class="flyer-card">
-      <div class="flyer-card-preview">
-        <img src="{{ '/assets/images/flyers/preview-hi.png' | relative_url }}" alt="Hindi flyer preview">
-      </div>
       <a href="{{ '/hi/flyer/?print=1' | relative_url }}" class="btn btn-outline-primary" target="_blank" rel="noopener">
         Generate हिंदी PDF
       </a>
