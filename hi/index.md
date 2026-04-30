@@ -74,7 +74,7 @@ alternate:
           <li class="mb-2"><strong>स्थान:</strong> <a href="{{ site.data.config.site.location.url }}" target="_blank" rel="noopener">{{ site.data.config.site.location.name }}</a></li>
           <li class="mb-2"><strong>पंजीकरण शुल्क:</strong> ₹300</li>
         </ul>
-        <a href="{{ '/hi/register/' | relative_url }}" class="btn btn-primary btn-lg">अभी पंजीकरण करें</a>
+        <a href="https://forms.gle/wwrdQNRJYpffNKtb6" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">अभी पंजीकरण करें</a>
       </div>
       <div class="col-lg-6">
         <div class="card bg-subtle">
