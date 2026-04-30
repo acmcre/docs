@@ -15,7 +15,7 @@ alternate:
     <h1>{{ strings.register.heading }}</h1>
 
     <div class="alert alert-success mb-4">
-      <strong>Registration Fee: ₹300.</strong> All participants receive a certificate of participation.
+      <strong>Registration Fee: Free.</strong> All participants receive a certificate of participation.
     </div>
 
     <p class="mb-3">

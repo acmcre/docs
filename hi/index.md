@@ -72,7 +72,7 @@ alternate:
           <li class="mb-2"><strong>तारीख:</strong> {{ site.data.config.site.date_display }}</li>
           <li class="mb-2"><strong>समय:</strong> {{ site.data.config.site.time }}</li>
           <li class="mb-2"><strong>स्थान:</strong> <a href="{{ site.data.config.site.location.url }}" target="_blank" rel="noopener">{{ site.data.config.site.location.name }}</a></li>
-          <li class="mb-2"><strong>पंजीकरण शुल्क:</strong> ₹300</li>
+          <li class="mb-2"><strong>पंजीकरण शुल्क:</strong> मुफ़्त</li>
         </ul>
         <a href="https://forms.gle/wwrdQNRJYpffNKtb6" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">अभी पंजीकरण करें</a>
       </div>

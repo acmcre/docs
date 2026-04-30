@@ -71,7 +71,7 @@ alternate:
           <li class="mb-2"><strong>Date:</strong> {{ site.data.config.site.date_display }}</li>
           <li class="mb-2"><strong>Time:</strong> {{ site.data.config.site.time }}</li>
           <li class="mb-2"><strong>Venue:</strong> <a href="{{ site.data.config.site.location.url }}" target="_blank" rel="noopener">{{ site.data.config.site.location.name }}</a></li>
-          <li class="mb-2"><strong>Registration Fee:</strong> ₹300</li>
+          <li class="mb-2"><strong>Registration Fee:</strong> Free</li>
         </ul>
         <a href="https://forms.gle/wwrdQNRJYpffNKtb6" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Register Now</a>
       </div>

@@ -15,7 +15,7 @@ alternate:
     <h1>{{ strings.register.heading }}</h1>
 
     <div class="alert alert-success mb-4">
-      <strong>पंजीकरण शुल्क: ₹300।</strong> सभी प्रतिभागियों को प्रमाणपत्र मिलेगा।
+      <strong>पंजीकरण शुल्क: मुफ़्त।</strong> सभी प्रतिभागियों को प्रमाणपत्र मिलेगा।
     </div>
 
     <p class="mb-3">
