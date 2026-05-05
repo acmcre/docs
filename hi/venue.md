@@ -45,7 +45,7 @@ alternate:
 </div>
 
 <div class="alert alert-info mb-5">
-  कार्यक्रम के दिन सहायता के लिए संपर्क करें: <a href="mailto:{{ site.data.config.site.social.email }}">{{ site.data.config.site.social.email }}</a>
+  कार्यक्रम के दिन सहायता के लिए कृपया ऑन-साइट इवेंट डेस्क से संपर्क करें।
 </div>
 
 <div class="row mb-5">

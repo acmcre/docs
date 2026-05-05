@@ -1,13 +1,9 @@
 {% comment %}
 Site Footer Component
-Renders organiser logos, contact info, copyright, and attribution.
-
-Data:
-  site.data.config.site.social.email (for contact link)
+Renders organiser logos, copyright, and attribution.
 
 Strings: site.data.strings[lang]
   - home.date_display: event date shown in footer
-  - footer.contact: contact link text
   - footer.copyright: copyright text
   - footer.built_by: attribution text
 
@@ -44,17 +40,12 @@ Assets:
         <span class="footer-divider">·</span>
         <span class="footer-date">{{ strings.home.date_display }}</span>
       </div>
-
-      <a href="mailto:{{ site.data.config.site.social.email }}" class="footer-contact">{{ strings.footer.contact }}</a>
     </div>
 
     <div class="footer-bottom">
       <p class="footer-copyright">{{ strings.footer.copyright }}</p>
       <div class="footer-attribution">
-        <a href="https://deeprajpandey.com/" target="_blank" rel="noopener">{{ strings.footer.built_by }}</a>
-        <a href="https://github.com/acm-cre/acm-cre.github.io" target="_blank" rel="noopener" title="View source on GitHub" class="footer-github-link">
-          <img src="{{ '/assets/images/social/github.svg' | relative_url }}" alt="GitHub" class="footer-github-icon">
-        </a>
+        <a href="https://github.com/Anupam1707" target="_blank" rel="noopener">{{ strings.footer.built_by }}</a>
       </div>
     </div>
   </div>

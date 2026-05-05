@@ -45,7 +45,7 @@ alternate:
 </div>
 
 <div class="alert alert-info mb-5">
-  For day-of assistance, contact <a href="mailto:{{ site.data.config.site.social.email }}">{{ site.data.config.site.social.email }}</a>
+  For day-of assistance, please refer to the on-site event desk.
 </div>
 
 <div class="row mb-5">

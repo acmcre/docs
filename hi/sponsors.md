@@ -64,11 +64,6 @@ alternate:
             <h3 class="h5 mb-2">प्रायोजन में रुचि है?</h3>
             <p class="text-muted mb-md-0">हम आपके लक्ष्यों और बजट के अनुरूप लचीले प्रायोजन स्तर प्रदान करते हैं। आइए चर्चा करें कि हम एक साथ कैसे काम कर सकते हैं।</p>
           </div>
-          <div class="col-md-4 text-md-end">
-            <a href="mailto:{{ site.data.content.sponsors.sponsorship_email }}?subject=COMPUTE%20Regional%20Event%20Sponsorship%20Inquiry" class="btn btn-primary">
-              संपर्क करें
-            </a>
-          </div>
         </div>
       </div>
     </div>

@@ -64,11 +64,6 @@ alternate:
             <h3 class="h5 mb-2">Interested in sponsoring?</h3>
             <p class="text-muted mb-md-0">We offer flexible sponsorship tiers to match your goals and budget. Let's discuss how we can work together.</p>
           </div>
-          <div class="col-md-4 text-md-end">
-            <a href="mailto:{{ site.data.content.sponsors.sponsorship_email }}?subject=COMPUTE%20Regional%20Event%20Sponsorship%20Inquiry" class="btn btn-primary">
-              Get in Touch
-            </a>
-          </div>
         </div>
       </div>
     </div>

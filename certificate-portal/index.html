@@ -223,9 +223,9 @@
   <header class="site-header" style="background: white; border-bottom: 1px solid var(--border); padding: 1rem 0;">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <a href="/" style="font-weight: 600; color: var(--text); text-decoration: none;">ACM COMPUTE</a>
+        <a href="/docs/" style="font-weight: 600; color: var(--text); text-decoration: none;">ACM COMPUTE</a>
         <nav>
-          <a href="/" style="color: var(--text-muted); text-decoration: none; margin-left: 2rem; font-size: 0.875rem;">Home</a>
+          <a href="/docs/" style="color: var(--text-muted); text-decoration: none; margin-left: 2rem; font-size: 0.875rem;">Home</a>
         </nav>
       </div>
     </div>
@@ -256,22 +256,11 @@
         <div class="col-lg-6 mx-auto">
           <div style="margin-bottom: 2rem;">
             <h1 style="margin-bottom: 0.5rem;">Download Certificate</h1>
-            <p style="color: var(--text-muted); margin-bottom: 0;">Enter your details to verify and generate your certificate</p>
+            <p style="color: var(--text-muted); margin-bottom: 0;">Enter your email address to verify and generate your certificate</p>
           </div>
 
           <div class="portal-card">
             <div id="status-t1" class="status-message"></div>
-
-            <div class="mb-3">
-              <label for="inp-name" class="form-label">Full Name</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="inp-name" 
-                placeholder="Enter your full name" 
-                oninput="lookupAttendee()" 
-                autocomplete="off">
-            </div>
 
             <div class="mb-3">
               <label for="inp-email" class="form-label">Email Address</label>
@@ -279,6 +268,17 @@
                 type="email" 
                 class="form-control" 
                 id="inp-email" 
+                placeholder="Enter your email address" 
+                oninput="lookupAttendee()" 
+                autocomplete="off">
+            </div>
+
+            <div class="mb-3">
+              <label for="inp-name" class="form-label">Full Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="inp-name" 
                 readonly>
             </div>
 
@@ -349,7 +349,7 @@
     <div class="container">
       <div style="text-align: center; color: var(--text-muted); font-size: 0.875rem;">
         <p style="margin-bottom: 0.5rem;">ACM COMPUTE Regional Event 2026 · Indore, India</p>
-        <p style="margin-bottom: 0;"><a href="/" style="color: var(--accent); text-decoration: none;">Back to Website</a></p>
+        <p style="margin-bottom: 0;"><a href="/docs/" style="color: var(--accent); text-decoration: none;">Back to Website</a></p>
       </div>
     </div>
   </footer>
@@ -422,17 +422,17 @@
     }
 
     function lookupAttendee() {
-      const raw = document.getElementById('inp-name').value.trim();
+      const raw = document.getElementById('inp-email').value.trim();
       const key = normalize(raw);
       
-      const inpEmail = document.getElementById('inp-email');
+      const inpName = document.getElementById('inp-name');
       const inpOrg = document.getElementById('inp-org');
       const st = document.getElementById('status-t1');
       const btn = document.getElementById('gen-btn');
 
       if (!raw) {
         st.classList.remove('ok', 'error');
-        inpEmail.value = '';
+        inpName.value = '';
         inpOrg.value = '';
         btn.disabled = true;
         currentRecord = null;
@@ -440,28 +440,28 @@
       }
 
       const matches = attendeesList.filter((rec) =>
-        normalize(rec.name).includes(key) || key.includes(normalize(rec.name))
+        normalize(rec.email) === key
       );
 
       if (matches.length === 1) {
         st.className = 'status-message ok';
         st.textContent = '✓ Verified';
         const match = matches[0];
-        inpEmail.value = match.email || '';
+        inpName.value = match.name || '';
         inpOrg.value = match.org || '';
         btn.disabled = false;
         currentRecord = match;
       } else if (matches.length > 1) {
         st.className = 'status-message ok';
-        st.textContent = '✓ Multiple matches found';
-        inpEmail.value = matches[0].email || '';
+        st.textContent = '✓ Found';
+        inpName.value = matches[0].name || '';
         inpOrg.value = matches[0].org || '';
         currentRecord = matches[0];
         btn.disabled = false;
       } else {
         st.className = 'status-message error';
-        st.textContent = '✗ Not found in attendee list';
-        inpEmail.value = '';
+        st.textContent = '✗ Email not found in attendee list';
+        inpName.value = '';
         inpOrg.value = '';
         btn.disabled = true;
         currentRecord = null;

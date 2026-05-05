@@ -573,17 +573,6 @@ section {
   color: $color-text;
 }
 
-.footer-contact {
-  font-size: 0.875rem;
-  color: $color-text-muted;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    color: $color-accent;
-  }
-}
-
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
