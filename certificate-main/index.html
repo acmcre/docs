@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICAIS 2026 — Certificate Portal</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root {
+  --r: #C8181A; --rd: #8B0000; --ink: #1a1a1a;
+  --mid: #555; --lt: #999;
+  --bg: #111; --bg-card: rgba(255,255,255,0.03);
+  --border: rgba(255,255,255,0.08);
+  --gold: #b8963e; --gold2: #d4b060;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background: var(--bg);
+  color: #fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ═══ BG TEXTURE ═══ */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(200,24,26,.02) 40px,rgba(200,24,26,.02) 41px),
+    repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,.01) 40px,rgba(255,255,255,.01) 41px);
+  pointer-events:none; z-index:0;
+}
+
+/* ═══ PAGES ═══ */
+.page { display:none; position:relative; z-index:1; min-height:100vh; padding: 20px; }
+.page.active { display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.page.top { justify-content:flex-start; padding-top: clamp(40px, 8vh, 80px); padding-bottom:80px; }
+
+/* ═══ LANDING ═══ */
+#pg-land {
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(200,24,26,.15) 0%, transparent 70%);
+  text-align:center;
+}
+.land-eyebrow {
+  font-family:'Oswald',sans-serif; font-size:clamp(10px, 2vw, 12px); letter-spacing:6px;
+  text-transform:uppercase; color:rgba(200,24,26,.8);
+  margin-bottom:24px;
+}
+.land-abbr {
+  font-family:'Bebas Neue',sans-serif; font-size:clamp(80px,20vw,200px);
+  line-height:.85; letter-spacing:4px; color:#fff;
+}
+.land-abbr .ai { color:var(--r); }
+.land-yr {
+  font-family:'Bebas Neue',sans-serif; font-size:clamp(30px,8vw,80px);
+  color:rgba(255,255,255,.1); letter-spacing:clamp(10px, 4vw, 20px); display:block; margin-top:8px;
+}
+.land-hdiv {
+  width:60px; height:2px;
+  background:linear-gradient(90deg,transparent,var(--r),transparent);
+  margin:28px auto;
+}
+.land-full {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3.5vw,24px);
+  color:rgba(255,255,255,.7); letter-spacing:1px; line-height:1.4;
+  margin-bottom:52px;
+  max-width: 600px;
+}
+
+/* ═══ BTN STYLES ═══ */
+.btn-main {
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  font-family:'Oswald',sans-serif; font-size:14px; letter-spacing:4px;
+  text-transform:uppercase; padding:18px clamp(30px, 8vw, 60px);
+  background:var(--r); color:#fff; border:none; cursor:pointer;
+  position:relative; overflow:hidden; transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:0 8px 32px rgba(200,24,26,.3);
+}
+.btn-main:hover { background:var(--rd); transform:translateY(-3px); box-shadow:0 12px 40px rgba(200,24,26,.45); }
+.btn-main:active { transform:translateY(0); }
+
+.btn-sec {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:3px;
+  text-transform:uppercase; padding:14px 36px;
+  background:transparent; color:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.15); cursor:pointer;
+  transition:all .2s;
+}
+.btn-sec:hover { border-color:rgba(255,255,255,.5); color:#fff; background:rgba(255,255,255,.05); }
+
+.back-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:3px;
+  text-transform:uppercase; color:rgba(255,255,255,.4); background:none;
+  border:none; cursor:pointer; transition:color .2s; padding:0; margin-bottom:40px;
+  align-self: flex-start;
+}
+.back-btn:hover { color:var(--r); }
+.back-btn svg { width:14px; height:14px; transition: transform 0.2s; }
+.back-btn:hover svg { transform: translateX(-4px); }
+
+/* ═══ ROLE SELECT ═══ */
+#pg-tracks { text-align:center; }
+.pg-header { margin-bottom: clamp(30px, 6vh, 60px); width: 100%; max-width: 800px; }
+.pg-eyebrow {
+  font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:5px;
+  text-transform:uppercase; color:var(--r); margin-bottom:12px;
+}
+.pg-title {
+  font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,10vw,88px);
+  color:#fff; letter-spacing:4px; line-height:0.9;
+}
+.pg-sub {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(18px, 2.5vw, 22px); color:rgba(255,255,255,.4); margin-top:14px;
+}
+
+.tracks-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:20px;
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+}
+.track-btn {
+  padding:40px 24px; background:var(--bg-card);
+  border:1px solid var(--border); cursor:pointer;
+  transition:all .3s cubic-bezier(0.4, 0, 0.2, 1); text-align:center; position:relative; overflow:hidden;
+}
+.track-btn::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+  background:var(--r); transform:scaleX(0); transition:transform .3s;
+}
+.track-btn:hover { background:rgba(200,24,26,.08); border-color:rgba(200,24,26,.4); transform:translateY(-5px); }
+.track-btn:hover::after { transform:scaleX(1); }
+
+.track-num {
+  font-family:'Bebas Neue',sans-serif; font-size:48px;
+  color:var(--r); line-height:1; margin-bottom:10px;
+}
+.track-label {
+  font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:3px;
+  text-transform:uppercase; color:rgba(255,255,255,.8);
+}
+
+/* ═══ COMING SOON PAGE ═══ */
+#pg-soon { text-align:center; background: radial-gradient(circle at center, rgba(200,24,26,0.05) 0%, transparent 70%); }
+.soon-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 40px);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.soon-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(200,24,26,0.15);
+  border: 1px solid var(--r);
+  color: var(--r);
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.soon-role {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 12vw, 80px);
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* ═══ PORTAL UI & DROPDOWN ═══ */
+.portal-wrap { width:100%; max-width:680px; margin:0 auto; }
+.portal-card {
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  padding: clamp(24px, 5vw, 48px);
+}
+.field-group { margin-bottom:24px; }
+.field-label {
+  font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:3px;
+  text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:10px; display:block;
+}
+.field-input {
+  width:100%; background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12); color:#fff;
+  font-family:'DM Sans',sans-serif; font-size:16px;
+  padding:16px 20px; outline:none; transition:all .2s;
+  border-radius: 0;
+}
+.field-input:focus { border-color:var(--r); background:rgba(200,24,26,.04); }
+.field-input.autofilled { border-color:rgba(200,24,26,.3); color: rgba(255,255,255, 0.9); }
+
+/* Theme-Synced Select Dropdown */
+select.field-input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C8181A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 1.2em;
+  padding-right: 3rem;
+  appearance: none;
+}
+select.field-input option {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 15px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.status-bar {
+  font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:3px;
+  text-transform:uppercase; padding:14px 18px; margin-bottom:24px; display:none;
+}
+.status-bar.ok { display:block; color:#4caf81; background:rgba(76,175,129,.1); border-left:4px solid #4caf81; }
+.status-bar.err { display:block; color:#e05555; background:rgba(224,85,85,.1); border-left:4px solid #e05555; }
+
+/* ═══ CERT PREVIEW ═══ */
+#pg-cert { background: #0a0a0a; }
+.cert-preview-wrap {
+  width:100%; max-width:1000px; margin:0 auto;
+  border:1px solid rgba(255,255,255,.1);
+  background: #fff; box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
+#certCanvas { width:100%; height:auto; display:block; }
+
+.btn-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .btn-main, .btn-sec { width: 100%; }
+  .page { padding: 15px; }
+  .portal-card { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ LANDING ══════════ -->
+<section class="page active" id="pg-land">
+  <div class="land-eyebrow">SVKM's NMIMS Indore · STME</div>
+  <div class="land-abbr"><span>IC</span><span class="ai">AI</span><span>S</span></div>
+  <span class="land-yr">2026</span>
+  <div class="land-hdiv"></div>
+  <div class="land-full">
+    International Conference on<br>Artificial Intelligence and Security<br>
+    <span style="font-size:.8em;color:rgba(255,255,255,0.35);">April 2–3, 2026 · Indore, India</span>
+  </div>
+  <button class="btn-main" onclick="go('pg-land','pg-tracks')">
+    <span>Certificate Portal</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </button>
+  <div class="pg-foot" style="margin-top: 60px; opacity: 0.3; font-size: 9px; letter-spacing: 3px; text-transform: uppercase;">
+    <a href="https://www.icais2026.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">www.icais2026.com</a>
+  </div>
+</section>
+
+<!-- ══════════ ROLE SELECT ══════════ -->
+<section class="page top" id="pg-tracks">
+  <button class="back-btn" onclick="go('pg-tracks','pg-land')">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+    Home
+  </button>
+  <div class="pg-header">
+    <div class="pg-eyebrow">ICAIS 2026 · Registry</div>
+    <div class="pg-title">Select<br>Your Role</div>
+    <div class="pg-sub">Choose your participation category to access certificates</div>
+  </div>
+    <div class="tracks-grid">
+    <div class="track-btn" onclick="setActiveRole('presentation')">
+      <div class="track-num">01</div>
+      <div class="track-label">Presentation</div>
+    </div>
+    <div class="track-btn" onclick="setActiveRole('sessionChair')">
+      <div class="track-num">02</div>
+      <div class="track-label">Session Chair</div>
+    </div>
+    <div class="track-btn" onclick="setActiveRole('reviewer')">
+      <div class="track-num">03</div>
+      <div class="track-label">Reviewer</div>
+    </div>
+    <div class="track-btn" onclick="setActiveRole('orgCommittee')">
+      <div class="track-num">04</div>
+      <div class="track-label">Organisation Committee</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PREMIUM COMING SOON ══════════ -->
+<section class="page top" id="pg-soon">
+  <button class="back-btn" onclick="go('pg-soon','pg-tracks')">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+    Roles
+  </button>
+  <div class="soon-card">
+    <div class="soon-badge">Portal Restricted</div>
+    <div class="soon-role" id="soon-role-label">Role</div>
+    <div class="pg-sub" style="margin-bottom: 40px; color: rgba(255,255,255,0.5);">This registry is currently being synchronized with the conference database. Please check back later.</div>
+    <button class="btn-sec" onclick="go('pg-soon','pg-tracks')">Return to Role Selection</button>
+  </div>
+</section>
+
+<!-- ══════════ PRESENTATION PORTAL ══════════ -->
+<section class="page top" id="pg-t1">
+  <div class="portal-wrap">
+    <button class="back-btn" onclick="go('pg-t1','pg-tracks')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+      Roles
+    </button>
+    <div class="pg-header" style="text-align:left;">
+      <div class="pg-eyebrow" id="role-eyebrow">Presenters Registry</div>
+      <div class="pg-title" style="font-size: clamp(38px, 8vw, 68px);">Download<br>Certificate</div>
+    </div>
+    <div class="portal-card">
+      <div id="status-t1" class="status-bar"></div>
+      <div class="field-group" id="group-id">
+        <label class="field-label" id="label-id">Paper ID</label>
+        <input class="field-input" type="text" id="inp-id" placeholder="e.g. 21" oninput="lookupPaper()" autocomplete="off">
+        <select id="sel-lookup" class="field-input" style="display:none;" onchange="selectLookupOption()"></select>
+      </div>
+      <div class="field-group" id="group-title">
+        <label class="field-label" id="label-title">Paper Title</label>
+        <input class="field-input" type="text" id="inp-title" readonly>
+      </div>
+      <div class="field-group" id="group-author">
+        <label class="field-label" id="label-author">Author Name</label>
+        <input class="field-input" type="text" id="inp-author" placeholder="Verification Pending" readonly>
+        <select id="sel-author" class="field-input" style="display:none;" onchange="selectAuthor()"></select>
+      </div>
+      <div class="field-group" id="group-affil">
+        <label class="field-label" id="label-affil">Affiliation</label>
+        <input class="field-input" type="text" id="inp-affil" readonly>
+      </div>
+      <button class="btn-main" id="gen-btn" disabled onclick="generateCert()" style="width:100%; margin-top:10px;">
+        Generate Certificate
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CERTIFICATE VIEW ══════════ -->
+<section class="page top" id="pg-cert">
+  <div style="width:100%; max-width:1000px; display: flex; flex-direction: column; align-items: center;">
+    <button class="back-btn" onclick="go('pg-cert','pg-t1')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+      Back to Registry
+    </button>
+    <div class="cert-preview-wrap">
+      <canvas id="certCanvas" width="2400" height="1697"></canvas>
+    </div>
+    <div class="btn-row">
+      <button class="btn-main" onclick="downloadPDF()">Download PDF Document</button>
+      <button class="btn-sec" onclick="go('pg-cert','pg-land')">Finish</button>
+    </div>
+  </div>
+</section>
+
+<script>
+let allRecords = [];
+let dataBySheet = {};
+let dataBySheetNormalized = {};
+let sheetOrder = [];
+let currentSheetName = '';
+let currentRole = '';
+let currentRecord = null;
+let currentMatches = [];
+let currentLookupRecords = [];
+
+const roleConfigs = {
+  presentation: {
+    label: 'Presentation',
+    sheetName: 'Certificates',
+    lookup: { label: 'Paper ID', placeholder: 'e.g. 21', keys: ['id'] },
+    fields: [
+      { key: 'title', label: 'Paper Title' },
+      { key: 'name', label: 'Author Name', allowSelect: true },
+      { key: 'affil', label: 'Affiliation' }
+    ],
+    hasHeaderRow: true,
+    headerAliases: {
+      id: ['id', 'paperid', 'paper_id', 'paper', 'paperno', 'papernumber'],
+      title: ['title', 'papertitle'],
+      name: ['author', 'authorname', 'name', 'presenter'],
+      affil: ['affiliation', 'affil', 'organisation', 'organization', 'institute', 'department']
+    },
+    cert: { type: 'presentation' }
+  },
+  reviewer: {
+    label: 'Reviewer',
+    sheetName: 'Reviewers',
+    lookup: { label: 'Email Address', placeholder: 'e.g. name@example.com', keys: ['email'] },
+    fields: [
+      { key: 'email', label: 'Email' },
+      { key: 'name', label: 'Reviewer Name', allowSelect: true },
+      { key: 'affil', label: 'Organization' }
+    ],
+    hasHeaderRow: false,
+    columns: ['name', 'email', 'affil'],
+    cert: { type: 'role', role: 'Reviewer' }
+  },
+  sessionChair: {
+    label: 'Session Chair',
+    sheetName: 'Session Chairs ',
+    lookup: { label: 'Select Name', placeholder: '', keys: ['name'], useDropdown: true },
+    fields: [
+      { key: 'name', label: 'Session Chair Name', allowSelect: true },
+      { key: 'affil', label: 'Affiliation' }
+    ],
+    hasHeaderRow: false,
+    columns: ['name', 'affil'],
+    cert: { type: 'role', role: 'Session Chair' }
+  },
+  orgCommittee: {
+    label: 'Organisation Committee',
+    sheetName: 'Organizing Committee',
+    lookup: { label: 'Select Member', placeholder: '', keys: ['name'], useDropdown: true },
+    fields: [
+      { key: 'name', label: 'Committee Member Name', allowSelect: true }
+    ],
+    hasHeaderRow: false,
+    columns: ['name'],
+    cert: { type: 'role', role: 'Organising Committee', bodyLine: 'has served on the Organising Committee' }
+  }
+};
+
+async function loadData() {
+  try {
+    const r = await fetch('data.xlsx');
+    if (!r.ok) throw new Error('not found');
+    const buf = await r.arrayBuffer();
+    parseWorkbook(buf);
+  } catch(e) {
+    console.error('Failed to load data.xlsx', e);
+  }
+}
+
+function normalizeHeader(s) {
+  return String(s || '').replace(/\s+/g,'').toLowerCase();
+}
+
+function cleanText(v) {
+  return String(v ?? '').replace(/\s+/g,' ').trim();
+}
+
+function parseWorkbook(buf) {
+  allRecords = [];
+  dataBySheet = {};
+  dataBySheetNormalized = {};
+  sheetOrder = [];
+  if (!window.XLSX) {
+    throw new Error('xlsx not loaded');
+  }
+
+  const wb = XLSX.read(buf, { type: 'array' });
+  const configBySheet = {};
+  Object.values(roleConfigs).forEach((cfg) => {
+    configBySheet[normalizeSheetName(cfg.sheetName)] = cfg;
+  });
+
+  wb.SheetNames.forEach((name) => {
+    const sheet = wb.Sheets[name];
+    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+    if (!rows.length) return;
+
+    const cfg = configBySheet[normalizeSheetName(name)];
+    const records = [];
+
+    if (cfg && cfg.columns && !cfg.hasHeaderRow) {
+      rows.forEach((row) => {
+        if (!row || row.every((c) => String(c).trim() === '')) return;
+        const rec = {};
+        cfg.columns.forEach((key, idx) => {
+          rec[key] = cleanText(row[idx]);
+        });
+        if (Object.values(rec).every((v) => !v)) return;
+        records.push(rec);
+      });
+    } else {
+      const headerRowIndex = rows.findIndex((r) => r.some((c) => String(c).trim() !== ''));
+      if (headerRowIndex === -1) return;
+      const headerRow = rows[headerRowIndex];
+      const headerAliases = (cfg && cfg.headerAliases) || roleConfigs.presentation.headerAliases;
+
+      const map = { id: -1, title: -1, name: -1, affil: -1 };
+      headerRow.forEach((cell, idx) => {
+        const key = normalizeHeader(cell);
+        Object.entries(headerAliases).forEach(([field, aliases]) => {
+          if (aliases.includes(key)) map[field] = idx;
+        });
+      });
+
+      rows.slice(headerRowIndex + 1).forEach((row) => {
+        if (!row || row.every((c) => String(c).trim() === '')) return;
+        const id = map.id >= 0 ? cleanText(row[map.id]) : '';
+        const title = map.title >= 0 ? cleanText(row[map.title]) : '';
+        const nameVal = map.name >= 0 ? cleanText(row[map.name]) : '';
+        const affil = map.affil >= 0 ? cleanText(row[map.affil]) : '';
+
+        if (!id && !title && !nameVal && !affil) return;
+        records.push({ id, title, name: nameVal, affil });
+      });
+    }
+
+    if (records.length) {
+      dataBySheet[name] = records;
+      dataBySheetNormalized[normalizeSheetName(name)] = records;
+      sheetOrder.push(name);
+      allRecords = allRecords.concat(records);
+    }
+  });
+
+  if (!currentSheetName && sheetOrder.length) {
+    currentSheetName = sheetOrder[0];
+  }
+
+  refreshLookupOptions();
+}
+
+function normalize(s) { return s.replace(/\s+/g,'').toLowerCase(); }
+
+function lookupPaper() {
+  const raw = document.getElementById('inp-id').value;
+  const key = normalize(raw);
+  const cfg = getActiveRoleConfig();
+  const activeDB = getActiveDB();
+  const lookupKeys = (cfg.lookup && cfg.lookup.keys) || ['id'];
+  const allowSelect = cfg.fields.some((field) => field.key === 'name' && field.allowSelect);
+  currentMatches = activeDB.filter((rec) =>
+    lookupKeys.some((k) => normalize(rec[k] || '') === key)
+  );
+  
+  const inpAuthor = document.getElementById('inp-author');
+  const selAuthor = document.getElementById('sel-author');
+  const inpTitle = document.getElementById('inp-title');
+  const inpAffil = document.getElementById('inp-affil');
+  const st = document.getElementById('status-t1');
+  const btn = document.getElementById('gen-btn');
+
+  const resetFields = () => {
+    inpAuthor.style.display = 'block';
+    selAuthor.style.display = 'none';
+    inpAuthor.value = '';
+    inpTitle.value = '';
+    inpAffil.value = '';
+    btn.disabled = true;
+    currentRecord = null;
+  };
+
+  if (!raw.trim()) {
+    st.style.display = 'none';
+    resetFields();
+    return;
+  }
+
+  if (currentMatches.length === 1) {
+    st.className = 'status-bar ok'; st.textContent = '✓ Record Verified';
+    inpAuthor.style.display = 'block';
+    selAuthor.style.display = 'none';
+    const match = currentMatches[0];
+    fillRoleFields(match);
+    btn.disabled = false;
+    currentRecord = match;
+  } else if (currentMatches.length > 1 && allowSelect) {
+    st.className = 'status-bar ok'; st.textContent = '✓ Multiple matches found — Please select your name below';
+    inpAuthor.style.display = 'none';
+    selAuthor.style.display = 'block';
+    selAuthor.innerHTML = '<option value="" disabled selected>-- Select your name --</option>';
+    currentMatches.forEach((m, idx) => {
+      const opt = document.createElement('option');
+      opt.value = idx;
+      opt.textContent = m.name || 'Unknown';
+      selAuthor.appendChild(opt);
+    });
+    fillRoleFields(currentMatches[0], { skipName: true });
+    currentRecord = null;
+    btn.disabled = true;
+  } else {
+    st.className = 'status-bar err'; st.textContent = '✗ Entry not registered';
+    resetFields();
+  }
+}
+
+function selectAuthor() {
+  const sel = document.getElementById('sel-author');
+  const idx = sel.value;
+  const btn = document.getElementById('gen-btn');
+  const inpTitle = document.getElementById('inp-title');
+  const inpAffil = document.getElementById('inp-affil');
+  
+  if (idx !== "") {
+    currentRecord = currentMatches[idx];
+    fillRoleFields(currentRecord);
+    btn.disabled = false;
+  }
+}
+
+function resetPortalFields() {
+  const inpAuthor = document.getElementById('inp-author');
+  const selAuthor = document.getElementById('sel-author');
+  const selLookup = document.getElementById('sel-lookup');
+  const inpTitle = document.getElementById('inp-title');
+  const inpAffil = document.getElementById('inp-affil');
+  const st = document.getElementById('status-t1');
+  const btn = document.getElementById('gen-btn');
+
+  st.style.display = 'none';
+  inpAuthor.style.display = 'block';
+  selAuthor.style.display = 'none';
+  selAuthor.innerHTML = '';
+  selLookup.value = '';
+  inpAuthor.value = '';
+  inpTitle.value = '';
+  inpAffil.value = '';
+  btn.disabled = true;
+  currentRecord = null;
+  currentMatches = [];
+  currentLookupRecords = [];
+  document.getElementById('inp-id').value = '';
+}
+
+function normalizeSheetName(name) {
+  return String(name || '').trim().toLowerCase();
+}
+
+function getActiveRoleConfig() {
+  return roleConfigs[currentRole] || roleConfigs.presentation;
+}
+
+function getActiveDB() {
+  return currentSheetName
+    ? (dataBySheet[currentSheetName] || dataBySheetNormalized[normalizeSheetName(currentSheetName)] || [])
+    : allRecords;
+}
+
+function applyRoleFields(cfg) {
+  const groupId = document.getElementById('group-id');
+  const groupTitle = document.getElementById('group-title');
+  const groupAuthor = document.getElementById('group-author');
+  const groupAffil = document.getElementById('group-affil');
+  const inputId = document.getElementById('inp-id');
+  const selectLookup = document.getElementById('sel-lookup');
+  const useDropdown = Boolean(cfg.lookup && cfg.lookup.useDropdown);
+
+  groupId.style.display = 'block';
+  groupTitle.style.display = 'none';
+  groupAuthor.style.display = 'none';
+  groupAffil.style.display = 'none';
+
+  if (useDropdown) {
+    inputId.style.display = 'none';
+    selectLookup.style.display = 'block';
+  } else {
+    inputId.style.display = 'block';
+    selectLookup.style.display = 'none';
+  }
+
+  document.getElementById('label-id').textContent = cfg.lookup.label;
+  document.getElementById('inp-id').placeholder = cfg.lookup.placeholder;
+
+  cfg.fields.forEach((field) => {
+    if (field.key === 'title' || field.key === 'email') {
+      groupTitle.style.display = 'block';
+      document.getElementById('label-title').textContent = field.label;
+    }
+    if (field.key === 'name') {
+      groupAuthor.style.display = 'block';
+      document.getElementById('label-author').textContent = field.label;
+    }
+    if (field.key === 'affil') {
+      groupAffil.style.display = 'block';
+      document.getElementById('label-affil').textContent = field.label;
+    }
+  });
+}
+
+function fillRoleFields(record, options = {}) {
+  const cfg = getActiveRoleConfig();
+  const skipName = options.skipName;
+
+  cfg.fields.forEach((field) => {
+    if (field.key === 'title') {
+      document.getElementById('inp-title').value = record.title || '';
+    }
+    if (field.key === 'email') {
+      document.getElementById('inp-title').value = record.email || '';
+    }
+    if (field.key === 'name' && !skipName) {
+      document.getElementById('inp-author').value = record.name || '';
+    }
+    if (field.key === 'affil') {
+      document.getElementById('inp-affil').value = record.affil || '';
+    }
+  });
+}
+
+function refreshLookupOptions() {
+  const cfg = getActiveRoleConfig();
+  if (cfg.lookup && cfg.lookup.useDropdown) {
+    populateLookupOptions(cfg);
+  }
+}
+
+function populateLookupOptions(cfg) {
+  const selectLookup = document.getElementById('sel-lookup');
+  const activeDB = getActiveDB();
+  const displayKey = (cfg.lookup && cfg.lookup.displayKey) || cfg.lookup.keys[0];
+  currentLookupRecords = activeDB;
+  selectLookup.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+
+  if (!activeDB.length) {
+    const opt = document.createElement('option');
+    opt.disabled = true;
+    opt.textContent = 'No entries available';
+    selectLookup.appendChild(opt);
+    return;
+  }
+
+  activeDB.forEach((rec, idx) => {
+    const opt = document.createElement('option');
+    opt.value = idx;
+    opt.textContent = rec[displayKey] || 'Unknown';
+    selectLookup.appendChild(opt);
+  });
+}
+
+function selectLookupOption() {
+  const selectLookup = document.getElementById('sel-lookup');
+  const st = document.getElementById('status-t1');
+  const btn = document.getElementById('gen-btn');
+  const idx = selectLookup.value;
+  if (idx === '') return;
+
+  const record = currentLookupRecords[Number(idx)];
+  if (!record) return;
+  const cfg = getActiveRoleConfig();
+  const lookupKey = cfg.lookup.keys[0];
+
+  currentRecord = record;
+  fillRoleFields(record);
+  document.getElementById('inp-id').value = record[lookupKey] || '';
+  st.className = 'status-bar ok';
+  st.textContent = '✓ Record Verified';
+  btn.disabled = false;
+}
+
+function setActiveRole(roleKey) {
+  const cfg = roleConfigs[roleKey];
+  if (!cfg) return;
+  currentRole = roleKey;
+  currentSheetName = cfg.sheetName;
+  const roleLabel = document.getElementById('role-eyebrow');
+  if (roleLabel) {
+    roleLabel.textContent = `${cfg.label} Registry`;
+  }
+  resetPortalFields();
+  applyRoleFields(cfg);
+  refreshLookupOptions();
+  go('pg-tracks','pg-t1');
+}
+
+function go(f, t) {
+  document.getElementById(f).classList.remove('active');
+  document.getElementById(t).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function showSoon(role) {
+  document.getElementById('soon-role-label').textContent = role;
+  go('pg-tracks','pg-soon');
+}
+
+function generateCert() {
+  if (!currentRecord) return;
+  go('pg-t1','pg-cert');
+  const canvas = document.getElementById('certCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  
+  const assets = { 
+    logo1: 'nmims.png', 
+    logo2: 'springer.png',
+    sign1: 'aj.png', 
+    sign2: 'vk.png', 
+    sign3: 'ss.png' 
+  };
+  
+  const imgs = {};
+  let loaded = 0;
+  const target = Object.keys(assets).length;
+  
+  Object.entries(assets).forEach(([key, src]) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => { imgs[key] = img; if(++loaded === target) drawCert(ctx, W, H, currentRecord, imgs); };
+    img.onerror = () => { imgs[key] = null; if(++loaded === target) drawCert(ctx, W, H, currentRecord, imgs); };
+  });
+}
+
+function drawCert(ctx, W, H, paper, imgs) {
+  ctx.fillStyle = '#fff'; ctx.fillRect(0,0,W,H);
+
+  /* ── BG PATTERN ── */
+  ctx.save();
+  ctx.globalAlpha = 0.035; ctx.strokeStyle = '#222'; ctx.lineWidth = 1.5;
+  for (let x = -H; x < W+H; x += 60) {
+    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x+H,H); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x-H,H); ctx.stroke();
+  }
+  ctx.restore();
+
+  /* ── CORNER DECOR ── */
+  const drawCorner = (x, y, f) => {
+    ctx.save(); ctx.translate(x,y); if(f) ctx.scale(-1,-1);
+    ctx.fillStyle = '#C8181A';
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(480,0); ctx.lineTo(0,280); ctx.fill();
+    ctx.fillStyle = 'rgba(139,0,0,0.4)';
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(320,0); ctx.lineTo(0,180); ctx.fill();
+    ctx.restore();
+  };
+  drawCorner(0,0,false); drawCorner(W,H,true);
+
+  /* ── BORDERS ── */
+  const m = 50;
+  ctx.strokeStyle = '#C8181A'; ctx.lineWidth = 8; ctx.strokeRect(m,m,W-m*2,H-m*2);
+  ctx.strokeStyle = 'rgba(0,0,0,0.1)'; ctx.lineWidth = 1.5; ctx.strokeRect(m+15,m+15,W-(m+15)*2,H-(m+15)*2);
+
+  /* ── RECTANGULAR LOGO FRAMES ── */
+  const logoY = 140, logoSpacing = W * 0.35;
+  const leftLogo = { width: 250, height: 250, label: 'NMIMS' };
+  const rightLogo = { width: 350, height: 175, label: 'SPRINGER' };
+
+  const drawRectLogo = (img, x, cfg) => {
+    const left = x - (cfg.width / 2);
+    const centerY = logoY + (cfg.height / 2);
+    ctx.save();
+    ctx.shadowBlur = 20; ctx.shadowColor = 'rgba(0,0,0,0.1)';
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(left, logoY, cfg.width, cfg.height);
+    ctx.restore();
+
+    const hasDrawableImage = img && img.width > 0 && img.height > 0;
+    if (hasDrawableImage) {
+      const coverScale = Math.max(cfg.width / img.width, cfg.height / img.height);
+      const sourceWidth = Math.min(img.width, cfg.width / coverScale);
+      const sourceHeight = Math.min(img.height, cfg.height / coverScale);
+      const sourceX = Math.max(0, (img.width - sourceWidth) / 2);
+      const sourceY = Math.max(0, (img.height - sourceHeight) / 2);
+      ctx.drawImage(
+        img,
+        sourceX, sourceY, sourceWidth, sourceHeight,
+        left, logoY, cfg.width, cfg.height
+      );
+    } else {
+      ctx.fillStyle = '#f8f8f8'; ctx.textAlign = 'center';
+      ctx.font = 'bold 20px Oswald'; ctx.fillText(cfg.label, x, centerY + 8);
+    }
+  };
+  drawRectLogo(imgs?.logo1, W/2-logoSpacing, leftLogo);
+  drawRectLogo(imgs?.logo2, W/2+logoSpacing, rightLogo);
+
+  /* ── TEXT CONTENT ── */
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#C8181A'; ctx.font = `900 ${W*0.078}px "Bebas Neue"`;
+  ctx.letterSpacing = '12px'; ctx.fillText('CERTIFICATE', W/2, 380);
+
+  ctx.fillStyle = '#222'; ctx.font = `600 ${W*0.026}px "Oswald"`;
+  ctx.letterSpacing = '18px'; ctx.fillText('OF APPRECIATION', W/2, 450);
+  ctx.letterSpacing = '0px';
+
+  /* Badge */
+  const bW = 500, bH = 64, bY = 510;
+  ctx.fillStyle = '#C8181A'; ctx.beginPath(); ctx.roundRect(W/2-bW/2, bY, bW, bH, 32); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = `600 24px "DM Sans"`; ctx.letterSpacing='3px';
+  ctx.fillText('THIS CERTIFIES THAT', W/2, bY+42);
+
+  /* Name */
+  const nameY = 740;
+  ctx.fillStyle = '#000'; ctx.font = `bold ${W*0.062}px "Cormorant Garamond"`;
+  ctx.fillText(paper.name || '', W/2, nameY);
+  ctx.strokeStyle = '#000'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W/2-400, nameY + 30); ctx.lineTo(W/2+400, nameY + 30); ctx.stroke();
+
+  /* ── AFFILIATION & BODY TEXT ── */
+	const cfg = getActiveRoleConfig();
+
+	let bodyStartY;
+
+	if (cfg.cert.type === 'role') {
+		const affilText = (paper.affil || '').trim();
+		const affilLineH = 52;
+		const affilMaxW = W * 0.75;
+		const affilTopY = nameY + 130;
+
+		let affilLines = [];
+		if (affilText) {
+			ctx.font = `600 40px "Oswald"`;
+			let affilLine = '';
+			const affilWords = affilText.split(/\s+/);
+			for (let word of affilWords) {
+				const next = affilLine ? `${affilLine} ${word}` : word;
+				if (ctx.measureText(next).width <= affilMaxW) {
+					affilLine = next;
+				} else {
+					if (affilLine) affilLines.push(affilLine);
+					affilLine = word;
+					if (ctx.measureText(affilLine).width > affilMaxW) {
+						affilLines.push(affilLine);
+						affilLine = '';
+					}
+				}
+			}
+			if (affilLine) affilLines.push(affilLine);
+
+			ctx.fillStyle = '#555';
+			ctx.font = `600 40px "Oswald"`;
+			ctx.textAlign = 'center';
+			affilLines.forEach((l, i) => ctx.fillText(l, W/2, affilTopY + i * affilLineH));
+		}
+
+		const affilBlockHeight = affilLines.length > 0 ? affilLines.length * affilLineH : 0;
+		bodyStartY = affilTopY + affilBlockHeight + 70;
+
+		ctx.fillStyle = '#444'; ctx.font = `italic 500 34px "Cormorant Garamond"`;
+		const bodyLine = cfg.cert.bodyLine || `has served as ${cfg.cert.role}`;
+		ctx.fillText(bodyLine, W/2, bodyStartY);
+
+		const confY = bodyStartY + 70;
+		ctx.fillStyle = '#555'; ctx.font = `500 32px "DM Sans"`;
+		ctx.fillText('at the International Conference on Artificial Intelligence and Security', W/2, confY);
+		ctx.fillStyle = '#000'; ctx.font = `bold 32px "DM Sans"`;
+		ctx.fillText('ICAIS 2026 · April 2–3, 2026 · Indore, India (Hybrid Mode)', W/2, confY+50);
+
+	} else {
+		const affilText = (paper.affil || '').trim();
+		const affilMaxW = W * 0.75;
+		const affilLineH = 52;
+		const affilY = nameY + 130;
+		let affilLine = '', affilLines = [];
+		if (affilText) {
+			ctx.font = `600 40px "Oswald"`;
+			const affilWords = affilText.split(/\s+/);
+			for (let word of affilWords) {
+				const next = affilLine ? `${affilLine} ${word}` : word;
+				if (ctx.measureText(next).width <= affilMaxW) {
+					affilLine = next;
+				} else {
+					if (affilLine) affilLines.push(affilLine);
+					affilLine = word;
+					if (ctx.measureText(affilLine).width > affilMaxW) {
+						affilLines.push(affilLine);
+						affilLine = '';
+					}
+				}
+			}
+			if (affilLine) affilLines.push(affilLine);
+			ctx.fillStyle = '#555';
+			affilLines.forEach((l, i) => ctx.fillText(l, W/2, affilY + i * affilLineH));
+		}
+
+		const affilLineCount = affilLines.length > 0 ? affilLines.length : 0;
+		const bodyY = affilY + (affilLineCount * affilLineH) + 70;
+
+		ctx.fillStyle = '#444'; ctx.font = `italic 500 34px "Cormorant Garamond"`;
+		ctx.fillText('has successfully presented the research paper titled', W/2, bodyY);
+
+		let confY = bodyY + 70;
+
+		if (paper.title) {
+			const titleY = bodyY + 70;
+			ctx.fillStyle = '#C8181A'; ctx.font = `700 44px "Cormorant Garamond"`;
+			const tWords = paper.title.split(' ');
+			let line = '', lines = [], maxW = W*0.8;
+			for(let w of tWords) {
+				if(ctx.measureText(line + w).width > maxW) { lines.push(line); line = w + ' '; }
+				else line += w + ' ';
+			}
+			lines.push(line);
+			lines.forEach((l, i) => ctx.fillText(i==0?'"'+l.trim():l.trim()+(i==lines.length-1?'"':''), W/2, titleY + i*65));
+			confY = titleY + lines.length*65 + 40;
+		}
+
+		ctx.fillStyle = '#555'; ctx.font = `500 32px "DM Sans"`;
+		ctx.fillText('at the International Conference on Artificial Intelligence and Security', W/2, confY);
+		ctx.fillStyle = '#000'; ctx.font = `bold 32px "DM Sans"`;
+		ctx.fillText('ICAIS 2026 · April 2–3, 2026 · Indore, India (Hybrid Mode)', W/2, confY+50);
+	}
+
+  /* Signatures */
+  const sigY = H - 250;
+  const sigSp = W * 0.3;
+  const sigImgW = 240;
+  const sigImgH = 110;
+  const sigImgGap = 12;
+  const sigs = [
+    { n: 'Dr. Anshuman Jaswal', r: "General Chair", img: imgs?.sign1, w: 260, h: 110, gap: 12 },
+    { n: 'Dr. Vikas Khare', r: "General Chair", img: imgs?.sign2, w: 300, h: 150, gap: 5 },
+    { n: 'Dr. Shruti Sharma', r: "Organizing Chair and Convener", img: imgs?.sign3, w: 300, h: 150, gap: 5 }
+  ];
+
+  [W/2-sigSp, W/2, W/2+sigSp].forEach((sx, i) => {
+    const sig = sigs[i];
+    const hasSigImage = sig.img && sig.img.width > 0 && sig.img.height > 0;
+    if (hasSigImage) {
+      const imgW = sig.w || sigImgW;
+      const imgH = sig.h || sigImgH;
+      const imgX = sx - imgW / 2;
+      const imgGap = sig.gap ?? sigImgGap;
+      const imgY = sigY - imgH - imgGap;
+      ctx.drawImage(sig.img, imgX, imgY, imgW, imgH);
+    }
+    ctx.strokeStyle='#333'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(sx-180, sigY); ctx.lineTo(sx+180, sigY); ctx.stroke();
+    ctx.fillStyle='#000'; ctx.font='bold 28px "DM Sans"'; ctx.fillText(sig.n, sx, sigY+45);
+    ctx.fillStyle='#666'; ctx.font='600 18px "Oswald"'; ctx.letterSpacing='2px';
+    const roleLines = sig.r.split(', ');
+    roleLines.forEach((rl, ri) => ctx.fillText(rl.toUpperCase(), sx, sigY+75 + ri*25));
+    ctx.letterSpacing='0px';
+  });
+}
+
+async function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const canvas = document.getElementById('certCanvas');
+  const imgData = canvas.toDataURL('image/png', 1.0);
+  const pdf = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
+  pdf.addImage(imgData,'PNG',0,0,297,210,undefined,'FAST');
+  pdf.save(`ICAIS2026_Certificate.pdf`);
+}
+
+window.addEventListener('load', loadData);
+</script>
+</body>
+</html>

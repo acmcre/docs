@@ -1,0 +1,176 @@
+21 | Predictive Maintenance of Wind Turbines Using Artificial Neural Networks for Anomaly Detection | Anitha Thangasamy | "Department of Computer Science and Engineering,
+Sathyabama Institute of Science and Technology, Chennai, India"
+21 | Predictive Maintenance of Wind Turbines Using Artificial Neural Networks for Anomaly Detection | Dharani M K | "Department of Computer Science and Engineering,
+Sathyabama Institute of Science and Technology, Chennai, India"
+21 | Predictive Maintenance of Wind Turbines Using Artificial Neural Networks for Anomaly Detection | Mahesh Babu K | "Department of Computer Science and Engineering,
+Sathyabama Institute of Science and Technology, Chennai, India"
+21 | Predictive Maintenance of Wind Turbines Using Artificial Neural Networks for Anomaly Detection | Lingireddygari Raja Reddy | "Department of Computer Science and Engineering,
+Sathyabama Institute of Science and Technology, Chennai, India"
+21 | Predictive Maintenance of Wind Turbines Using Artificial Neural Networks for Anomaly Detection | Thiyagu T M | "Department of Computer Science and Engineering (AIML),
+Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology, Chennai, India"
+38 | Extracting Secrets Through Interpretability: Privacy
+Threats in Explainable AI Systems and
+Cryptographic Mitigation Strategies | Charan Marthala | "Texas Tech University"
+44 | Bridging Language and Mathematics: A
+Topological Approach to Universal Semantic
+Mapping | Siddhant Poojary | "University of Mumbai, Mumbai, India."
+45 | AI-Powered Knowledge Assistants: Enhancing
+Student Support Systems with Large Language
+Models and Retrieval-Augmented Generation | Siddhant Poojary | "University of Mumbai, Mumbai, India."
+46 | Blockchain based Access Revocation using Key
+Escrow Smart Contracts | Shiwangi Singh | "Mangalmay Institute of Management and Technology, India"
+46 | Blockchain based Access Revocation using Key
+Escrow Smart Contracts | Om Kumar | "Mangalmay Institute of Management and Technology, India"
+46 | Blockchain based Access Revocation using Key
+Escrow Smart Contracts | Shubhanshu Tiwari | "Mangalmay Institute of Management and Technology, India"
+46 | Blockchain based Access Revocation using Key
+Escrow Smart Contracts | Aryan Rathore | "Mangalmay Institute of Management and Technology, India"
+46 | Blockchain based Access Revocation using Key
+Escrow Smart Contracts | Seema Jogad | "Mangalmay Institute of Management and Technology, India"
+55 | SecureAuth AI: Adaptive Multi
+Factor Authentication
+Using Behavioural Biometrics | Muskan | "Department of Computer Science and Engineering, Chandigarh University Mohali(Punjab)"
+55 | SecureAuth AI: Adaptive Multi
+Factor Authentication
+Using Behavioural Biometrics | Amit Kumar | "Department of Computer Science and Engineering, Chandigarh University Mohali(Punjab)"
+55 | SecureAuth AI: Adaptive Multi
+Factor Authentication
+Using Behavioural Biometrics | Dr Suresh Kaswan | "Department of Computer Science and Engineering, Chandigarh University Mohali(Punjab)"
+125 | Enhancing Virtual Try-On with 360 degree
+Garment Visualization via VITON | Hima Latha P | "Computer Science Engineering, Siddhartha Academy Of Higher Education, Deemed to be University, Kanur, Vijayawada, 520001, Andhra Pradesh, India"
+125 | Enhancing Virtual Try-On with 360 degree
+Garment Visualization via VITON | Kranthi Kumar G | "Computer Science Engineering, Siddhartha Academy Of Higher Education, Deemed to be University, Kanur, Vijayawada, 520001, Andhra Pradesh, India"
+125 | Enhancing Virtual Try-On with 360 degree
+Garment Visualization via VITON | Renuka Sri Tulasi | "Computer Science Engineering, Siddhartha Academy Of Higher Education, Deemed to be University, Kanur, Vijayawada, 520001, Andhra Pradesh, India"
+146 | Wildfire Risk Prediction and Monitoring System Using Satellite Data and Machine Learning | Hemant Saroha | "Department of Computer Science and Engineering Amity School of Engineering and Technology Amity University, Noida 201301"
+146 | Wildfire Risk Prediction and Monitoring System Using Satellite Data and Machine Learning | Archit Tyagi | "Department of Computer Science and Engineering Amity School of Engineering and Technology Amity University, Noida 201301"
+146 | Wildfire Risk Prediction and Monitoring System Using Satellite Data and Machine Learning | Anirudh Goyal | "Department of Computer Science and Engineering Amity School of Engineering and Technology Amity University, Noida 201301"
+146 | Wildfire Risk Prediction and Monitoring System Using Satellite Data and Machine Learning | Sweta Srivastava | "Department of Computer Science and Engineering Amity School of Engineering and Technology Amity University, Noida 201301"
+172 | Trade-Off Analysis of Differential Privacy for Employee Attrition Prediction using Exponential Mechanism: Balancing Utility, Privacy Budget (ϵ), and Computational Cost in Tree-Based Models | JOHN LEE MATANGUIHAN | "Batangas State University – Alangilan Campus College of Informatics and Computing Sciences Batangas City, Philippines"
+172 | Trade-Off Analysis of Differential Privacy for Employee Attrition Prediction using Exponential Mechanism: Balancing Utility, Privacy Budget (ϵ), and Computational Cost in Tree-Based Models | RYNDEL  V. AMORADO | "College of Informatics and Computing Sciences Batangas State University Batangas City 4200, Philippine"
+172 | Trade-Off Analysis of Differential Privacy for Employee Attrition Prediction using Exponential Mechanism: Balancing Utility, Privacy Budget (ϵ), and Computational Cost in Tree-Based Models | ROWELL M. HERNANDEZ | "College of Informatics and Computing Sciences Batangas State University Batangas City 4200, Philippine"
+172 | Trade-Off Analysis of Differential Privacy for Employee Attrition Prediction using Exponential Mechanism: Balancing Utility, Privacy Budget (ϵ), and Computational Cost in Tree-Based Models | PRINCESS MARIE B. MELO | "College of Informatics and Computing Sciences Batangas State University Batangas City 4200, Philippine"
+220 | A Data Quality Driven Explainable Framework for Air Quality Forecasting in Indian Cities | Aathishga V P | "Department of Computer Science and Engineering, Presidency University,
+Bengaluru-560064, India"
+220 | A Data Quality Driven Explainable Framework for Air Quality Forecasting in Indian Cities | Dr. Abirami A | "Department of Computer Science and Engineering, Presidency University,
+Bengaluru-560064, India"
+223 | Securing the DNS: A Survey of Recent Advances
+in Malicious Domain Detection via Deep
+Learning, Graph Neural Networks, and
+Foundation Models | Ajay Sharma | "Indian Space Research Organisation, Ahmedabad, India"
+223 | Securing the DNS: A Survey of Recent Advances
+in Malicious Domain Detection via Deep
+Learning, Graph Neural Networks, and
+Foundation Models | Naveen Kumar | "Indian Institute of Information Technology, Vadodara, India"
+223 | Securing the DNS: A Survey of Recent Advances
+in Malicious Domain Detection via Deep
+Learning, Graph Neural Networks, and
+Foundation Models | Dharmendra Singh | "Indian Institute of Information Technology, Vadodara, India"
+223 | Securing the DNS: A Survey of Recent Advances
+in Malicious Domain Detection via Deep
+Learning, Graph Neural Networks, and
+Foundation Models | Rohit Tyagi | "Indian Space Research Organisation, Ahmedabad, India"
+267 | Multimodal Semantic Matching with
+Confidence-Based Decision Support for
+Lost-and-Found Systems | Vinayak Soni | "Department of Computing Technologies, SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu, India"
+267 | Multimodal Semantic Matching with
+Confidence-Based Decision Support for
+Lost-and-Found Systems | Agradeep Sarkar | "Department of Computing Technologies, SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu, India"
+267 | Multimodal Semantic Matching with
+Confidence-Based Decision Support for
+Lost-and-Found Systems | Dr. Koushik CP | "Department of Computing Technologies, SRM Institute of Science and Technology, Kattankulathur, Tamil Nadu, India"
+271 | Evaluating Security and Robustness of
+Instruction-Tuned Large Language Models Against
+Adversarial Prompt Attacks | Pranjali Anil Chaudhari | "Department of Data Science (Information Technology), Marathwada Mitra Mandal’s College of Engineering, Pune, India"
+271 | Evaluating Security and Robustness of
+Instruction-Tuned Large Language Models Against
+Adversarial Prompt Attacks | Preeti S. Joshi | "Department of Data Science (Information Technology), Marathwada Mitra Mandal’s College of Engineering, Pune, India"
+276 | Energy Optimization and Emerging Technologies
+in Advancing Wireless Sensor Networks | Parambrata Sanyal | "Symbiosis Institute of Technology, Nagpur Campus, Symbiosis International (Deemed University), Pune, Maharashtra, India"
+276 | Energy Optimization and Emerging Technologies
+in Advancing Wireless Sensor Networks | Gopal Kumar Gupta | "Symbiosis Institute of Technology, Nagpur Campus, Symbiosis International (Deemed University), Pune, Maharashtra, India"
+276 | Energy Optimization and Emerging Technologies
+in Advancing Wireless Sensor Networks | Akanksha Sahu | "Department of Electronics & Telecommunication Engineering, Government Engineering College, Raipur, Chhattisgarh, India"
+276 | Energy Optimization and Emerging Technologies
+in Advancing Wireless Sensor Networks | Ajit Kumar Singh | "School of Technology Management and Engineering, SVKM’s Narsee Monjee Institute of Management Studies, Indore, Madhya Pradesh, India"
+276 | Energy Optimization and Emerging Technologies
+in Advancing Wireless Sensor Networks | Ajit Kumar | "Faculty of Engineering, Teerthanker Mahaveer University, Moradabad, Uttar Pradesh, India"
+276 | Energy Optimization and Emerging Technologies
+in Advancing Wireless Sensor Networks | Bharti Kumari | "Department of Mathematics, Kamla Rai College, Gopalganj, Bihar, India"
+279 | Healthcare Insurance Analytics Using AI and
+ML: A Review | Goswami Lalita | "Jodhpur Institute of Engineering of Technology, Jodhpur, India"
+279 | Healthcare Insurance Analytics Using AI and
+ML: A Review | Anamika Choudhary | "Jodhpur Institute of Engineering of Technology, Jodhpur, India"
+291 | Real-Centric Generator-Agnostic Deepfake
+Detection via Multi-Domain Feature Fusion | Naman Shah | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+291 | Real-Centric Generator-Agnostic Deepfake
+Detection via Multi-Domain Feature Fusion | Prof. Jasleean Gonsalves | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+293 | Hierarchical Vision Transformer with Attention-driven Recurrent Modeling and Metaheuristic Optimization for Neurological Disorder Diagnosis using fMRI Neuroimaging | Sachin Kumar | "Department of Computer Science and IT, Faculty of Mathematical Science, University of Jammu, Jammu & Kashmir, India"
+293 | Hierarchical Vision Transformer with Attention-driven Recurrent Modeling and Metaheuristic Optimization for Neurological Disorder Diagnosis using fMRI Neuroimaging | Sourabh Shastri | "Department of Computer Science and IT, Faculty of Mathematical Science, University of Jammu, Jammu & Kashmir, India"
+293 | Hierarchical Vision Transformer with Attention-driven Recurrent Modeling and Metaheuristic Optimization for Neurological Disorder Diagnosis using fMRI Neuroimaging | Vibhakar Mansotra | "Department of Computer Science and IT, Faculty of Mathematical Science, University of Jammu, Jammu & Kashmir, India"
+304 | Retrieval Strategy and Context Selection
+Ablation in Frozen Multimodal Medical RAG
+Systems | Supriya Prajapati | "COEP Technological University, Pune, India"
+304 | Retrieval Strategy and Context Selection
+Ablation in Frozen Multimodal Medical RAG
+Systems | Sunil Mane | "COEP Technological University, Pune, India"
+306 | A Cloud-Native Distributed Architecture for Real-Time Baggage Tracking in Smart Airport Operations | Koshangi | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+306 | A Cloud-Native Distributed Architecture for Real-Time Baggage Tracking in Smart Airport Operations | Priyal Kadam | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+306 | A Cloud-Native Distributed Architecture for Real-Time Baggage Tracking in Smart Airport Operations | Prof. Jasleean Gonsalves | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+309 | Revolutionizing Electronic Health Record Systems
+with AI | Mohini Jindal | "Independent Reseacher, Mckinney, 75072, TX, USA"
+309 | Revolutionizing Electronic Health Record Systems
+with AI | Sandeep Singh Saini | "2Independent Reseacher, Ashburn, 20148, VA, USA."
+317 | Spectral-Guided Model Routing for Liquidity
+Gap Prediction in High-Frequency
+Cryptocurrency Order Books | Kiran Ingale | "Department of Computer Science and Engineering (AIML), Vishwakarma Institute of Technology (VIT), Pune, India"
+317 | Spectral-Guided Model Routing for Liquidity
+Gap Prediction in High-Frequency
+Cryptocurrency Order Books | Rishikesh Bhagat | "Department of Computer Science and Engineering (AIML), Vishwakarma Institute of Technology (VIT), Pune, India"
+317 | Spectral-Guided Model Routing for Liquidity
+Gap Prediction in High-Frequency
+Cryptocurrency Order Books | Divya Asnani | "Department of Computer Science and Engineering (AIML), Vishwakarma Institute of Technology (VIT), Pune, India"
+317 | Spectral-Guided Model Routing for Liquidity
+Gap Prediction in High-Frequency
+Cryptocurrency Order Books | Dirghayushi Bhurase | "Department of Computer Science and Engineering (AIML), Vishwakarma Institute of Technology (VIT), Pune, India"
+317 | Spectral-Guided Model Routing for Liquidity
+Gap Prediction in High-Frequency
+Cryptocurrency Order Books | Aryan Pawar | "Department of Computer Science and Engineering (AIML), Vishwakarma Institute of Technology (VIT), Pune, India"
+317 | Spectral-Guided Model Routing for Liquidity
+Gap Prediction in High-Frequency
+Cryptocurrency Order Books | Anisha Verma | "Department of Computer Science and Engineering (AIML), Vishwakarma Institute of Technology (VIT), Pune, India"
+332 | A Multi-Stage Hybrid Neural Architecture with Grad-CAM Explainability for Dermatological Image Classification | Divya R | "Department of Computer Science and Engineering, Thiagarajar College of Engineering, Madurai, India"
+332 | A Multi-Stage Hybrid Neural Architecture with Grad-CAM Explainability for Dermatological Image Classification | Subbulakshmi B | "Department of Computer Science and Engineering, Thiagarajar College of Engineering, Madurai, India"
+332 | A Multi-Stage Hybrid Neural Architecture with Grad-CAM Explainability for Dermatological Image Classification | Nirmala Devi M | "Department of Computer Science and Engineering, Thiagarajar College of Engineering, Madurai, India"
+333 | Real-Time Tomato Leaf Disease Detection Using
+YOLOv10 for Precision Agriculture | Namrata Bhatt | "Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore, India"
+333 | Real-Time Tomato Leaf Disease Detection Using
+YOLOv10 for Precision Agriculture | Shubham Kothari | "Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore, India"
+333 | Real-Time Tomato Leaf Disease Detection Using
+YOLOv10 for Precision Agriculture | Garima Jain | "Babu Banarasi Das Institute of Technology & Management, Lucknow, India"
+333 | Real-Time Tomato Leaf Disease Detection Using
+YOLOv10 for Precision Agriculture | Ankita Kalosiya | "JC Bose University of Science & Technology, YMCA, Faridabad, India"
+333 | Real-Time Tomato Leaf Disease Detection Using
+YOLOv10 for Precision Agriculture | Vivek Jindal | "Medicaps University, Indore, India"
+336 | Comparative Analysis of Ensemble Machine Learning Models for Concrete Strength Prediction | Devansh Jain | "School of Technology Management & Engineering,SVKM's Narsee Monjee Institute of Management Studies (NMIMS) Deemed-to-University, Indore 453112, India"
+336 | Comparative Analysis of Ensemble Machine Learning Models for Concrete Strength Prediction | Twishi Wadhwa | "School of Technology Management & Engineering,SVKM's Narsee Monjee Institute of Management Studies (NMIMS) Deemed-to-University, Indore 453112, India"
+336 | Comparative Analysis of Ensemble Machine Learning Models for Concrete Strength Prediction | Ariha Jain | "School of Technology Management & Engineering,SVKM's Narsee Monjee Institute of Management Studies (NMIMS) Deemed-to-University, Indore 453112, India"
+336 | Comparative Analysis of Ensemble Machine Learning Models for Concrete Strength Prediction | Dr. Nidhi Asthana | "School of Technology Management & Engineering,SVKM's Narsee Monjee Institute of Management Studies (NMIMS) Deemed-to-University, Indore 453112, India"
+336 | Comparative Analysis of Ensemble Machine Learning Models for Concrete Strength Prediction | Dr. Gaurav Paliwal | "School of Technology Management & Engineering,SVKM's Narsee Monjee Institute of Management Studies (NMIMS) Deemed-to-University, Indore 453112, India"
+340 | Mobile Applications Testing: Trends, Techniques,
+Challenges, And Solutions | Khushboo Samota | "Department of Computer Science, Banasthali Vidyapith, Banasthali, Rajasthan, India"
+340 | Mobile Applications Testing: Trends, Techniques,
+Challenges, And Solutions | Ajit Kumar Jain | "Department of Computer Science, Banasthali Vidyapith, Banasthali, Rajasthan, India"
+352 | Evidence-Grounded Hallucination Detection with Hybrid Neural-Symbolic Verification for Large Language Model Outputs | Ishan Agarwal | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+352 | Evidence-Grounded Hallucination Detection with Hybrid Neural-Symbolic Verification for Large Language Model Outputs | Aarjav Jain | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+352 | Evidence-Grounded Hallucination Detection with Hybrid Neural-Symbolic Verification for Large Language Model Outputs | Jesleena Gonsalves | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+354 | A Hybrid Explainable AI Framework for Feature
+Selection and an Ensemble Learning based
+DDoS Detection | Nilay Khare | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+354 | A Hybrid Explainable AI Framework for Feature
+Selection and an Ensemble Learning based
+DDoS Detection | Priti Rumao | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+355 | Blockchain-Based Decentralized Ticket Booking System for Secure and Transparent Ticket Manage-ment | Owais Bubere | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+355 | Blockchain-Based Decentralized Ticket Booking System for Secure and Transparent Ticket Manage-ment | Meet Maheshwari | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+355 | Blockchain-Based Decentralized Ticket Booking System for Secure and Transparent Ticket Manage-ment | Priti Rumao | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
+355 | Blockchain-Based Decentralized Ticket Booking System for Secure and Transparent Ticket Manage-ment | Jasleena Gonsalves | "Department of Computer Engineering, Mukesh Patel School of Technology Management and Engineering (MPSTME), SVKM’s NMIMS University, Mumbai, India"
