@@ -2,8 +2,10 @@
 # Front matter required for Jekyll to process this file
 ---
 
+// Custom variables (before Bootstrap)
+@import "variables";
+
 // Bootstrap with our variable overrides
-// (imports _variables.scss internally before Bootstrap variables)
 @import "bootstrap";
 
 // Custom site styles
