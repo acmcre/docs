@@ -445,170 +445,307 @@
       // Draw image, scaled to fit with padding
       if (img) {
         const cellX = x + pad + inner + imgPad;
-const cellY = y + pad + inner + imgPad;
-        const cellW = w - (pad + inner + imgPad) * 2;
-        const cellH = h - (pad + inner + imgPad) * 2;
-        const scale = Math.min(cellW / img.width, cellH / img.height);
-        const dw = img.width * scale;
-        const dh = img.height * scale;
-        const dx = cellX + (cellW - dw) / 2;
-        const dy = cellY + (cellH - dh) / 2;
-        ctx.drawImage(img, dx, dy, dw, dh);
-      }
-      ctx.restore();
-    }
+        const cellY = y + pad + inner + imgPad;
+        const cellW = w - (pad + inner + imgPad) * 2;
+        const cellH = h - (pad + inner + imgPad) * 2;
+        const scale = Math.min(cellW / img.width, cellH / img.height);
+        const dw    = img.width  * scale;
+        const dh    = img.height * scale;
+        ctx.drawImage(img, cellX + (cellW - dw) / 2, cellY + (cellH - dh) / 2, dw, dh);
+      }
+      ctx.restore();
+    }
 
-    /* ─────────────────────────────────────────────────────────────────────
-       RENDER MAIN CERTIFICATE
-    ───────────────────────────────────────────────────────────────────── */
-    function renderCertificate(ctx, W, H, record, assets) {
-      const primaryAccent = '#C45C3E';
-      const secondaryAccent = '#D4AF37'; // Gold
-      const textDark = '#2D2D2D';
-      const textMuted = '#6B6B6B';
+    /* ─────────────────────────────────────────────────────────────────────
+       MAIN RENDER
+    ───────────────────────────────────────────────────────────────────── */
+    function renderCertificate(ctx, width, height, record, assets) {
+      const accent      = '#C45C3E';
+      const accentLight = '#D4A598';
+      const gold        = '#D4A053';
+      const soft        = '#6B6B6B';
+      const text        = '#2D2D2D';
+      const cream       = '#FAF8F6';
+      const organization   = (record.org || '').trim();
+      const certificateId  = getCertificateId(record);
 
-      // Background Fill
-      ctx.fillStyle = '#FBF9F8';
-      ctx.fillRect(0, 0, W, H);
+      // ── BACKGROUND ──
+      const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+      bgGradient.addColorStop(0,   '#FFFFFF');
+      bgGradient.addColorStop(0.5, cream);
+      bgGradient.addColorStop(1,   '#F5F0EB');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, width, height);
 
-      // Outer Border Framework
-      ctx.strokeStyle = secondaryAccent;
-      ctx.lineWidth = 18;
-      ctx.strokeRect(50, 50, W - 100, H - 100);
-      ctx.strokeStyle = primaryAccent;
-      ctx.lineWidth = 4;
-      ctx.strokeRect(75, 75, W - 150, H - 150);
+      // ── CORNER TRIANGLES ──
+      const drawCornerTriangle = (x, y, size, flip) => {
+        ctx.save();
+        ctx.translate(x, y);
+        if (flip) ctx.scale(-1, -1);
+        const gradient = ctx.createLinearGradient(0, 0, size, size);
+        gradient.addColorStop(0, gold);
+        gradient.addColorStop(1, accent);
+        ctx.fillStyle = gradient;
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(size, 0); ctx.lineTo(0, size); ctx.closePath(); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(size * 0.3, 0); ctx.lineTo(0, size * 0.3); ctx.stroke();
+        ctx.restore();
+      };
+      drawCornerTriangle(0, 0, 400, false);
+      drawCornerTriangle(width, height, 400, true);
 
-      // Top Logos (Left, Center, Right)
-      const frameW = 320;
-      const frameH = 140;
-      const topY = 140;
-      if (assets.logoLeft) drawRectLogoFrame(ctx, assets.logoLeft, 140, topY, frameW, frameH, secondaryAccent, primaryAccent);
-      if (assets.logoRight) drawRectLogoFrame(ctx, assets.logoRight, W - 140 - frameW, topY, frameW, frameH, secondaryAccent, primaryAccent);
-      
-      if (assets.logoCentre) {
-        const scale = Math.min(360 / assets.logoCentre.width, 180 / assets.logoCentre.height);
-        const dw = assets.logoCentre.width * scale;
-        const dh = assets.logoCentre.height * scale;
-        ctx.drawImage(assets.logoCentre, (W - dw) / 2, topY - 10, dw, dh);
-      }
+      // ── CORNER FLOURISHES ──
+      const drawFlourish = (x, y, flip) => {
+        ctx.save(); ctx.translate(x, y);
+        if (flip) ctx.scale(-1, -1);
+        ctx.strokeStyle = accent; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(30, 30); ctx.quadraticCurveTo(50, 40, 70, 30); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(30, 30); ctx.quadraticCurveTo(40, 50, 30, 70); ctx.stroke();
+        ctx.fillStyle = accent;
+        [[25,25],[75,35],[35,75]].forEach(([dx, dy]) => { ctx.beginPath(); ctx.arc(dx, dy, 4, 0, Math.PI * 2); ctx.fill(); });
+        ctx.restore();
+      };
+      drawFlourish(40, 40, false);
+      drawFlourish(width - 40, height - 40, true);
 
-      // Certificate Typography
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      // ── BORDER FRAMES ──
+      const margin = 70;
+      ctx.strokeStyle = gold;   ctx.lineWidth = 5;
+      ctx.strokeRect(margin, margin, width - margin * 2, height - margin * 2);
+      const innerMargin = margin + 22;
+      ctx.strokeStyle = accent; ctx.lineWidth = 2;
+      ctx.strokeRect(innerMargin, innerMargin, width - innerMargin * 2, height - innerMargin * 2);
 
-      // Main Header
-      ctx.fillStyle = primaryAccent;
-      ctx.font = '700 130px "Cormorant Garamond"';
-      ctx.fillText('CERTIFICATE', W / 2, 480);
+      // Border corner elements
+      const cornerSize = 70;
+      [[margin, margin],[width - margin, margin],[margin, height - margin],[width - margin, height - margin]].forEach(([cx, cy], idx) => {
+        ctx.save(); ctx.translate(cx, cy); ctx.rotate(idx * Math.PI / 2);
+        ctx.strokeStyle = gold; ctx.lineWidth = 4; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(-cornerSize/2, 0); ctx.lineTo(-22, 0); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, -cornerSize/2); ctx.lineTo(0, -22); ctx.stroke();
+        ctx.restore();
+      });
 
-      // Subheader
-      ctx.fillStyle = secondaryAccent;
-      ctx.font = '500 42px "Oswald"';
-      ctx.letterSpacing = '12px';
-      ctx.fillText('OF PARTICIPATION', W / 2, 570);
-      ctx.letterSpacing = '0px'; // reset spacing
+      // ── THREE RECTANGULAR LOGOS ──
+      // Logo dimensions and vertical position
+      const logoW  = 360;   // each logo box width
+      const logoH  = 230;   // each logo box height
+      const logoTopY = margin + 32;  // tight below outer border, well above inner border
 
-      // Presentation Line
-      ctx.fillStyle = textMuted;
-      ctx.font = '400 48px "Outfit"';
-      ctx.fillText('This is proudly presented to', W / 2, 720);
+      const centerX = width / 2;
 
-      // Attendee Name
-      ctx.fillStyle = textDark;
-      ctx.font = '700 100px "Cormorant Garamond"';
-      ctx.fillText((record.name || 'Attendee').toUpperCase(), W / 2, 860);
+      // Positions: left | centre | right — evenly spaced in the safe zone
+      // Available horizontal width between inner borders: width - 2*innerMargin
+      // We'll place them symmetrically with clear padding
+      const logoCentreX = centerX - logoW / 2;
+      const sidePad     = 120; // gap between centre box edge and side box
+      const logoLeftX   = logoCentreX - logoW - sidePad;
+      const logoRightX  = logoCentreX + logoW + sidePad;
 
-      // Separator Line under Name
-      ctx.beginPath();
-      ctx.moveTo(W / 2 - 450, 920);
-      ctx.lineTo(W / 2 + 450, 920);
-      ctx.strokeStyle = secondaryAccent;
-      ctx.lineWidth = 3;
-      ctx.stroke();
+      drawRectLogoFrame(ctx, assets.logoLeft,   logoLeftX,   logoTopY, logoW, logoH, gold, accent);
+      drawRectLogoFrame(ctx, assets.logoCentre, logoCentreX, logoTopY, logoW, logoH, gold, accent);
+      drawRectLogoFrame(ctx, assets.logoRight,  logoRightX,  logoTopY, logoW, logoH, gold, accent);
 
-      // Organization text
-      ctx.fillStyle = textMuted;
-      ctx.font = '400 42px "Outfit"';
-      if (record.org) ctx.fillText(`from ${record.org}`, W / 2, 1000);
+      // Thin decorative connector lines between the three logo boxes
+      const lineY = logoTopY + logoH / 2;
+      ctx.strokeStyle = gold; ctx.lineWidth = 1.5;
+      // left gap line
+      ctx.beginPath(); ctx.moveTo(logoLeftX + logoW + 6, lineY); ctx.lineTo(logoCentreX - 6, lineY); ctx.stroke();
+      // right gap line
+      ctx.beginPath(); ctx.moveTo(logoCentreX + logoW + 6, lineY); ctx.lineTo(logoRightX - 6, lineY); ctx.stroke();
+      // Small diamond connectors at mid-gap
+      const drawDiamond = (cx, cy, r) => {
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy);
+        ctx.closePath(); ctx.fill();
+        ctx.fillStyle = gold;
+        ctx.beginPath();
+        const ri = r * 0.52;
+        ctx.moveTo(cx, cy - ri); ctx.lineTo(cx + ri, cy); ctx.lineTo(cx, cy + ri); ctx.lineTo(cx - ri, cy);
+        ctx.closePath(); ctx.fill();
+      };
+      drawDiamond(logoLeftX + logoW + sidePad / 2, lineY, 18);
+      drawDiamond(logoCentreX + logoW + sidePad / 2, lineY, 18);
 
-      // Description Text
-      ctx.fillStyle = textDark;
-      ctx.font = '400 40px "Outfit"';
-      ctx.fillText('for their active participation and contribution in the', W / 2, 1120);
-      ctx.font = '700 40px "Outfit"';
-      ctx.fillText('ACM COMPUTE Regional Event 2026', W / 2, 1180);
-      ctx.font = '400 40px "Outfit"';
-      ctx.fillText('held at Indore, Madhya Pradesh, India.', W / 2, 1240);
+      // ── TITLE SECTION ──
+      ctx.textAlign = 'center';
+      const titleY = logoTopY + logoH + 110;
 
-      // Signatures Section
-      const sigY = 1480;
-      const sigW = 280;
+      ctx.fillStyle = accent;
+      ctx.font = '700 155px "Cormorant Garamond", serif';
+      ctx.fillText('Certificate', centerX, titleY);
 
-      function drawSignature(img, x, name, title) {
-        if (img) {
-          const scale = Math.min(sigW / img.width, 110 / img.height);
-          const sw = img.width * scale;
-          const sh = img.height * scale;
-          ctx.drawImage(img, x - sw / 2, sigY - sh - 20, sw, sh);
-        }
-        
-        ctx.beginPath();
-        ctx.moveTo(x - 160, sigY);
-        ctx.lineTo(x + 160, sigY);
-        ctx.strokeStyle = textDark;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
+      // Decorative underline of title
+      const titleUnderlineY = titleY + 18;
+      ctx.strokeStyle = gold; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(centerX - 360, titleUnderlineY); ctx.lineTo(centerX - 80, titleUnderlineY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(centerX + 80,  titleUnderlineY); ctx.lineTo(centerX + 360, titleUnderlineY); ctx.stroke();
+      ctx.fillStyle = accent;
+      ctx.beginPath(); ctx.arc(centerX, titleUnderlineY, 8, 0, Math.PI * 2); ctx.fill();
 
-        ctx.fillStyle = textDark;
-        ctx.font = '600 32px "Outfit"';
-        ctx.fillText(name, x, sigY + 45);
-        ctx.fillStyle = textMuted;
-        ctx.font = '400 26px "Outfit"';
-        ctx.fillText(title, x, sigY + 85);
-      }
+      ctx.fillStyle = soft;
+      ctx.font = '600 44px "Outfit", sans-serif';
+      ctx.fillText('OF APPRECIATION', centerX, titleY + 80);
 
-      drawSignature(assets.sign1, W / 2 - 680, 'Dr. A. J.', 'General Chair');
-      drawSignature(assets.sign2, W / 2, 'Dr. S. S.', 'Program Chair');
-      drawSignature(assets.sign3, W / 2 + 680, 'Dr. V. K.', 'Organizing Secretary');
+      // Horizontal decorative rule
+      const ruleY = titleY + 122;
+      const ruleGrad = ctx.createLinearGradient(centerX - 550, ruleY, centerX + 550, ruleY);
+      ruleGrad.addColorStop(0,   'rgba(212,160,83,0)');
+      ruleGrad.addColorStop(0.3, gold);
+      ruleGrad.addColorStop(0.5, accent);
+      ruleGrad.addColorStop(0.7, gold);
+      ruleGrad.addColorStop(1,   'rgba(212,160,83,0)');
+      ctx.strokeStyle = ruleGrad; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(centerX - 550, ruleY); ctx.lineTo(centerX + 550, ruleY); ctx.stroke();
 
-      // Verification ID
-      const certId = getCertificateId(record);
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#999999';
-      ctx.font = '400 22px "Oswald"';
-      ctx.fillText(`ID: ${certId}`, 110, H - 110);
-    }
+      // ── RECIPIENT ──
+      ctx.fillStyle = soft;
+      ctx.font = '400 38px "Outfit", sans-serif';
+      ctx.fillText('This Certificate is presented to', centerX, ruleY + 68);
 
-    /* ─────────────────────────────────────────────────────────────────────
-       DOWNLOAD PDF USING JSPDF
-    ───────────────────────────────────────────────────────────────────── */
-    function downloadPDF() {
-      if (!currentRecord) return;
-      
-      const canvas = document.getElementById('certCanvas');
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      
-      // Setup jsPDF instance in landscape A4 format
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: 'a4' // 297mm x 210mm
-      });
+      const nameY = ruleY + 210;
+      ctx.fillStyle = text;
+      ctx.font = '700 118px "Cormorant Garamond", serif';
+      ctx.fillText(record.name || '', centerX, nameY);
 
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
+      // Name underline
+      const nameUnderlineY = nameY + 24;
+      const nameGradient   = ctx.createLinearGradient(centerX - 550, nameUnderlineY, centerX + 550, nameUnderlineY);
+      nameGradient.addColorStop(0,   'rgba(212,160,83,0)');
+      nameGradient.addColorStop(0.2, gold);
+      nameGradient.addColorStop(0.5, accent);
+      nameGradient.addColorStop(0.8, gold);
+      nameGradient.addColorStop(1,   'rgba(212,160,83,0)');
+      ctx.strokeStyle = nameGradient; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(centerX - 550, nameUnderlineY); ctx.lineTo(centerX + 550, nameUnderlineY); ctx.stroke();
 
-      // Fit canvas image exactly to PDF boundaries
-      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+      // Organization
+      if (organization) {
+        ctx.fillStyle = soft;
+        ctx.font = '500 50px "Outfit", sans-serif';
+        ctx.fillText(organization, centerX, nameY + 110);
+      }
 
-      const cleanName = (currentRecord.name || 'Participant').replace(/[^a-zA-Z0-9]/g, '_');
-      pdf.save(`ACM_Compute_2026_${cleanName}.pdf`);
-    }
+      // ── BODY TEXT ──
+      const bodyStart = organization ? nameY + 210 : nameY + 140;
+      ctx.fillStyle = soft;
+      ctx.font = '400 40px "Outfit", sans-serif';
+      ctx.fillText('for the contribution at the workshop held by', centerX, bodyStart);
 
-    // Initialize app by loading the remote Excel file
-    window.addEventListener('DOMContentLoaded', loadData);
-  </script>
+      ctx.fillStyle = text;
+      ctx.font = '700 48px "Outfit", sans-serif';
+      ctx.fillText('ACM COMPUTE Regional Event', centerX, bodyStart + 82);
+
+      ctx.fillStyle = soft;
+      ctx.font = '400 40px "Outfit", sans-serif';
+      ctx.fillText('2026 — Indore, India', centerX, bodyStart + 148);
+
+      // Certificate ID box
+      const idY       = bodyStart + 230;
+      const idBoxWidth = 420, idBoxHeight = 66;
+      ctx.strokeStyle = accent; ctx.lineWidth = 2;
+      ctx.strokeRect(centerX - idBoxWidth/2, idY - idBoxHeight/2, idBoxWidth, idBoxHeight);
+      ctx.fillStyle = 'rgba(196,92,62,0.05)';
+      ctx.fillRect(centerX - idBoxWidth/2, idY - idBoxHeight/2, idBoxWidth, idBoxHeight);
+      ctx.fillStyle = accent;
+      ctx.font = '600 28px "Oswald", sans-serif';
+      ctx.fillText(certificateId, centerX, idY + 10);
+
+      // ── SIGNATURES ──
+      // Order (left → right): Anshuman Jaswal | Vikas Khare (centre) | Shruti Sharma
+      const signatureY       = height - 195;
+      const signatureSpacing = 610;
+
+      const signatures = [
+        {
+          label: 'Director, SVKM\'s NMIMS Indore',
+          name:  'Dr. Anshuman Jaswal',
+          img:   assets.sign1
+        },
+        {
+          label: 'Associate Dean, STME, SVKM\'s NMIMS Indore',
+          name:  'Dr. Vikas Khare',
+          img:   assets.sign3   // Vikas → centre
+        },
+        {
+          label: 'Organizing Chair',
+          name:  'Dr. Shruti Sharma',
+          img:   assets.sign2   // Shruti → right
+        }
+      ];
+
+      [centerX - signatureSpacing, centerX, centerX + signatureSpacing].forEach((x, index) => {
+        const sig = signatures[index];
+
+        // Signature image
+        if (sig.img) {
+          const imgWidth  = 280, imgHeight = 110;
+          ctx.drawImage(sig.img, x - imgWidth / 2, signatureY - imgHeight - 18, imgWidth, imgHeight);
+        }
+
+        // Signature line
+        const lineGrad = ctx.createLinearGradient(x - 170, signatureY, x + 170, signatureY);
+        lineGrad.addColorStop(0,   'rgba(196,92,62,0.2)');
+        lineGrad.addColorStop(0.5, accent);
+        lineGrad.addColorStop(1,   'rgba(196,92,62,0.2)');
+        ctx.strokeStyle = lineGrad; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(x - 170, signatureY); ctx.lineTo(x + 170, signatureY); ctx.stroke();
+
+        // Name — bold, prominent
+        ctx.fillStyle   = text;
+        ctx.font        = '700 30px "Outfit", sans-serif';
+        ctx.textAlign   = 'center';
+        ctx.fillText(sig.name, x, signatureY + 46);
+
+        // Role — lighter, multiline if needed
+        ctx.fillStyle = soft;
+        ctx.font      = '500 24px "Outfit", sans-serif';
+
+        // Wrap long role text onto two lines at a natural break
+        const roleWords   = sig.label.split(' ');
+        const maxLineW    = 340; // px at canvas scale
+        let lines         = [];
+        let currentLine   = '';
+        ctx.save();
+        roleWords.forEach((word) => {
+          const test = currentLine ? currentLine + ' ' + word : word;
+          if (ctx.measureText(test).width > maxLineW && currentLine) {
+            lines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = test;
+          }
+        });
+        if (currentLine) lines.push(currentLine);
+        ctx.restore();
+
+        const lineHeight = 32;
+        lines.forEach((line, li) => {
+          ctx.fillText(line, x, signatureY + 84 + li * lineHeight);
+        });
+      });
+
+      // ── SUBTLE WATERMARK DOTS ──
+      ctx.save();
+      ctx.globalAlpha = 0.02;
+      ctx.fillStyle   = accent;
+      for (let i = 0; i < 8; i++) for (let j = 0; j < 6; j++) {
+        ctx.beginPath(); ctx.arc(300 + i * 280, 200 + j * 240, 40, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    function downloadPDF() {
+      if (!currentRecord) return;
+      const { jsPDF } = window.jspdf;
+      const canvas    = document.getElementById('certCanvas');
+      const pdf       = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+      pdf.addImage(canvas.toDataURL('image/png', 1.0), 'PNG', 0, 0, 297, 210, undefined, 'FAST');
+      pdf.save(`CRE_Certificate_${String(currentRecord.name || 'attendee').replace(/\s+/g, '_')}.pdf`);
+    }
+
+    window.addEventListener('load', loadData);
+  </script>
 </body>
 </html>
