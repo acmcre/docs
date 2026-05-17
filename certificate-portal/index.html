@@ -445,4 +445,170 @@
       // Draw image, scaled to fit with padding
       if (img) {
         const cellX = x + pad + inner + imgPad;
-        const cellY =
+const cellY = y + pad + inner + imgPad;
+        const cellW = w - (pad + inner + imgPad) * 2;
+        const cellH = h - (pad + inner + imgPad) * 2;
+        const scale = Math.min(cellW / img.width, cellH / img.height);
+        const dw = img.width * scale;
+        const dh = img.height * scale;
+        const dx = cellX + (cellW - dw) / 2;
+        const dy = cellY + (cellH - dh) / 2;
+        ctx.drawImage(img, dx, dy, dw, dh);
+      }
+      ctx.restore();
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────
+       RENDER MAIN CERTIFICATE
+    ───────────────────────────────────────────────────────────────────── */
+    function renderCertificate(ctx, W, H, record, assets) {
+      const primaryAccent = '#C45C3E';
+      const secondaryAccent = '#D4AF37'; // Gold
+      const textDark = '#2D2D2D';
+      const textMuted = '#6B6B6B';
+
+      // Background Fill
+      ctx.fillStyle = '#FBF9F8';
+      ctx.fillRect(0, 0, W, H);
+
+      // Outer Border Framework
+      ctx.strokeStyle = secondaryAccent;
+      ctx.lineWidth = 18;
+      ctx.strokeRect(50, 50, W - 100, H - 100);
+      ctx.strokeStyle = primaryAccent;
+      ctx.lineWidth = 4;
+      ctx.strokeRect(75, 75, W - 150, H - 150);
+
+      // Top Logos (Left, Center, Right)
+      const frameW = 320;
+      const frameH = 140;
+      const topY = 140;
+      if (assets.logoLeft) drawRectLogoFrame(ctx, assets.logoLeft, 140, topY, frameW, frameH, secondaryAccent, primaryAccent);
+      if (assets.logoRight) drawRectLogoFrame(ctx, assets.logoRight, W - 140 - frameW, topY, frameW, frameH, secondaryAccent, primaryAccent);
+      
+      if (assets.logoCentre) {
+        const scale = Math.min(360 / assets.logoCentre.width, 180 / assets.logoCentre.height);
+        const dw = assets.logoCentre.width * scale;
+        const dh = assets.logoCentre.height * scale;
+        ctx.drawImage(assets.logoCentre, (W - dw) / 2, topY - 10, dw, dh);
+      }
+
+      // Certificate Typography
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Main Header
+      ctx.fillStyle = primaryAccent;
+      ctx.font = '700 130px "Cormorant Garamond"';
+      ctx.fillText('CERTIFICATE', W / 2, 480);
+
+      // Subheader
+      ctx.fillStyle = secondaryAccent;
+      ctx.font = '500 42px "Oswald"';
+      ctx.letterSpacing = '12px';
+      ctx.fillText('OF PARTICIPATION', W / 2, 570);
+      ctx.letterSpacing = '0px'; // reset spacing
+
+      // Presentation Line
+      ctx.fillStyle = textMuted;
+      ctx.font = '400 48px "Outfit"';
+      ctx.fillText('This is proudly presented to', W / 2, 720);
+
+      // Attendee Name
+      ctx.fillStyle = textDark;
+      ctx.font = '700 100px "Cormorant Garamond"';
+      ctx.fillText((record.name || 'Attendee').toUpperCase(), W / 2, 860);
+
+      // Separator Line under Name
+      ctx.beginPath();
+      ctx.moveTo(W / 2 - 450, 920);
+      ctx.lineTo(W / 2 + 450, 920);
+      ctx.strokeStyle = secondaryAccent;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Organization text
+      ctx.fillStyle = textMuted;
+      ctx.font = '400 42px "Outfit"';
+      if (record.org) ctx.fillText(`from ${record.org}`, W / 2, 1000);
+
+      // Description Text
+      ctx.fillStyle = textDark;
+      ctx.font = '400 40px "Outfit"';
+      ctx.fillText('for their active participation and contribution in the', W / 2, 1120);
+      ctx.font = '700 40px "Outfit"';
+      ctx.fillText('ACM COMPUTE Regional Event 2026', W / 2, 1180);
+      ctx.font = '400 40px "Outfit"';
+      ctx.fillText('held at Indore, Madhya Pradesh, India.', W / 2, 1240);
+
+      // Signatures Section
+      const sigY = 1480;
+      const sigW = 280;
+
+      function drawSignature(img, x, name, title) {
+        if (img) {
+          const scale = Math.min(sigW / img.width, 110 / img.height);
+          const sw = img.width * scale;
+          const sh = img.height * scale;
+          ctx.drawImage(img, x - sw / 2, sigY - sh - 20, sw, sh);
+        }
+        
+        ctx.beginPath();
+        ctx.moveTo(x - 160, sigY);
+        ctx.lineTo(x + 160, sigY);
+        ctx.strokeStyle = textDark;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        ctx.fillStyle = textDark;
+        ctx.font = '600 32px "Outfit"';
+        ctx.fillText(name, x, sigY + 45);
+        ctx.fillStyle = textMuted;
+        ctx.font = '400 26px "Outfit"';
+        ctx.fillText(title, x, sigY + 85);
+      }
+
+      drawSignature(assets.sign1, W / 2 - 680, 'Dr. A. J.', 'General Chair');
+      drawSignature(assets.sign2, W / 2, 'Dr. S. S.', 'Program Chair');
+      drawSignature(assets.sign3, W / 2 + 680, 'Dr. V. K.', 'Organizing Secretary');
+
+      // Verification ID
+      const certId = getCertificateId(record);
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#999999';
+      ctx.font = '400 22px "Oswald"';
+      ctx.fillText(`ID: ${certId}`, 110, H - 110);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────
+       DOWNLOAD PDF USING JSPDF
+    ───────────────────────────────────────────────────────────────────── */
+    function downloadPDF() {
+      if (!currentRecord) return;
+      
+      const canvas = document.getElementById('certCanvas');
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      
+      // Setup jsPDF instance in landscape A4 format
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: 'a4' // 297mm x 210mm
+      });
+
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+
+      // Fit canvas image exactly to PDF boundaries
+      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
+      const cleanName = (currentRecord.name || 'Participant').replace(/[^a-zA-Z0-9]/g, '_');
+      pdf.save(`ACM_Compute_2026_${cleanName}.pdf`);
+    }
+
+    // Initialize app by loading the remote Excel file
+    window.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
