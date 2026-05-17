@@ -3,26 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Certificates | ACM COMPUTE Regional Event</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <title>Under Maintenance | ACM COMPUTE Regional Event</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --accent: #C45C3E;
-      --accent-hover: #A34D33;
       --text: #2D2D2D;
       --text-muted: #6B6B6B;
-      --text-subtle: #9A9A9A;
-      --bg: #FFFFFF;
-      --bg-subtle: #F7F7F7;
+      --bg: #FBF9F8;
       --border: #E5E5E5;
-      --shadow: 0 28px 80px rgba(45, 45, 45, 0.08);
     }
 
-    * { box-sizing: border-box; font-family: "Outfit", system-ui, -apple-system, sans-serif; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      font-family: "Outfit", system-ui, -apple-system, sans-serif;
+    }
 
     body {
       margin: 0;
@@ -30,585 +25,124 @@
       background:
         radial-gradient(circle at top left, rgba(196, 92, 62, 0.08), transparent 30%),
         radial-gradient(circle at bottom right, rgba(196, 92, 62, 0.05), transparent 28%),
-        linear-gradient(180deg, #ffffff 0%, #fbf8f6 100%);
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
       min-height: 100vh;
-      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
     }
 
+    /* Subtle background grid pattern */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       pointer-events: none;
       background: repeating-linear-gradient(-45deg, transparent, transparent 44px, rgba(196, 92, 62, 0.018) 44px, rgba(196, 92, 62, 0.018) 45px);
-      z-index: 0;
+      z-index: -1;
     }
 
-    h1, h2, h3, h4, h5, h6 { color: var(--text); font-weight: 700; line-height: 1.25; margin-top: 0; }
-
-    .page-shell { position: relative; z-index: 1; }
-
-    .site-header {
-      position: sticky; top: 0; z-index: 30;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+    .maintenance-container {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 3.5rem 2.5rem;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 28px 80px rgba(45, 45, 45, 0.08);
+      position: relative;
     }
 
-    .site-header-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; padding: 1rem 0;
-    }
-
-    .site-brand { color: var(--text); text-decoration: none; font-weight: 800; letter-spacing: 0.02em; font-size: 0.98rem; }
-    .site-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; margin-left: 1.5rem; font-weight: 500; }
-
-    .hero { padding: 3.5rem 0 1.75rem; }
-
-    .hero-card { border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
-
-    .hero-inner {
-      padding: 2.25rem;
-      background: linear-gradient(135deg, rgba(196, 92, 62, 0.06) 0%, rgba(196, 92, 62, 0.015) 100%);
-      border-bottom: 1px solid var(--border);
+    .maintenance-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
     }
 
     .kicker {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.42rem 0.75rem; margin-bottom: 1rem;
-      background: rgba(196, 92, 62, 0.1); color: var(--accent);
+      display: inline-block;
+      padding: 0.42rem 0.75rem;
+      margin-bottom: 1.5rem;
+      background: rgba(196, 92, 62, 0.1);
+      color: var(--accent);
       border: 1px solid rgba(196, 92, 62, 0.18);
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .hero-title { font-size: clamp(2rem, 4vw, 3.6rem); margin: 0 0 0.85rem; max-width: 14ch; }
-    .hero-copy { max-width: 64ch; margin-bottom: 0; color: var(--text-muted); line-height: 1.75; font-size: 1rem; }
-
-    .portal-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-      gap: 1.5rem; padding: 2rem 2.25rem 2.25rem;
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+      color: var(--text);
+      line-height: 1.2;
     }
 
-    .panel { border: 1px solid var(--border); background: #fff; }
-    .form-panel { padding: 1.75rem; }
-    .summary-panel { padding: 1.75rem; background: linear-gradient(180deg, #fff 0%, #f8f4f1 100%); }
-
-    .summary-title { margin: 0 0 0.9rem; color: var(--text-subtle); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 700; }
-    .summary-empty { color: var(--text-muted); font-size: 0.96rem; line-height: 1.7; margin: 0; }
-    .summary-list { display: grid; gap: 0.85rem; }
-
-    .summary-item { display: flex; flex-direction: column; gap: 0.3rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
-    .summary-item:last-child { padding-bottom: 0; border-bottom: 0; }
-    .summary-item span { color: var(--text-subtle); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
-    .summary-item strong { color: var(--text); font-size: 0.98rem; word-break: break-word; }
-
-    .form-label { font-weight: 700; color: var(--text); margin-bottom: 0.5rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.07em; }
-
-    .form-control {
-      border: 1px solid var(--border); border-radius: 0;
-      padding: 0.85rem 1rem; font-size: 1rem;
-      transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin: 0 0 2rem;
     }
 
-    .form-control:focus { border-color: var(--accent); box-shadow: inset 0 0 0 0.2rem rgba(196, 92, 62, 0.08); outline: none; }
-    .form-control:disabled, .form-control[readonly] { background-color: var(--bg-subtle); color: var(--text-muted); cursor: not-allowed; }
-
-    .status-message {
-      display: none; margin-bottom: 1rem; padding: 0.9rem 1rem; border-radius: 0;
-      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .status-message.ok { display: block; color: #2E7D32; background: #EAF6EC; border-left: 4px solid #2E7D32; }
-    .status-message.error { display: block; color: #C62828; background: #FFEBEE; border-left: 4px solid #C62828; }
-
-    .btn {
-      border-radius: 0; font-size: 0.82rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em; padding: 0.9rem 1.15rem;
-      transition: transform 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .btn-primary:hover, .btn-primary:focus { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
-    .btn-primary:disabled { background: var(--text-subtle); border-color: var(--text-subtle); opacity: 0.7; transform: none; cursor: not-allowed; }
-    .btn-secondary { background: var(--bg-subtle); border-color: var(--border); color: var(--text); }
-    .btn-secondary:hover, .btn-secondary:focus { background: #ece8e5; border-color: var(--text-subtle); color: var(--text); }
-
-    .lookup-note { margin: 1rem 0 0; color: var(--text-subtle); font-size: 0.92rem; line-height: 1.6; }
-
-    .preview-section { padding: 0 0 4rem; }
-
-    .preview-head {
-      display: flex; justify-content: space-between; align-items: end;
-      gap: 1.25rem; flex-wrap: wrap; margin: 0 0 1rem;
+    .loader {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(196, 92, 62, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 1rem;
     }
 
-    .canvas-wrap { border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
-
-    #certCanvas { width: 100%; height: auto; display: block; }
-
-    .preview-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .preview-actions .btn { min-width: 180px; }
-
-    .site-footer { border-top: 1px solid var(--border); background: #fff; padding: 1.75rem 0; margin-top: 1rem; }
-
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 1rem; flex-wrap: wrap; color: var(--text-muted); font-size: 0.875rem;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
-    .footer-inner a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
-    .hidden { display: none !important; }
+    .footer-text {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    
+    .footer-text span {
+      display: block;
+      margin-top: 0.25rem;
+      opacity: 0.7;
+    }
 
-    @media (max-width: 991px) { .portal-grid { grid-template-columns: 1fr; } }
     @media (max-width: 576px) {
-      .hero-inner, .portal-grid, .form-panel, .summary-panel { padding: 1.25rem; }
-      .preview-actions .btn { width: 100%; }
-      .hero-title { max-width: none; }
+      .maintenance-container {
+        padding: 2.5rem 1.5rem;
+      }
+      h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="container">
-        <div class="site-header-inner">
-          <a class="site-brand" href="/docs/">ACM COMPUTE</a>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="/docs/">Home</a>
-          </nav>
-        </div>
-      </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="container">
-          <div class="hero-card">
-            <div class="hero-inner">
-              <div class="kicker">ACM COMPUTE Regional Event 2026</div>
-              <h1 class="hero-title">Verify by email. Generate a polished certificate in one step.</h1>
-              <p class="hero-copy">Enter the attendee email address from the registration list. The portal will match the record, fill the name and organization automatically, and render the final PDF certificate with the official event artwork and signature layout.</p>
-            </div>
-
-            <div class="portal-grid">
-              <section class="panel form-panel" aria-labelledby="lookup-title">
-                <h2 id="lookup-title" class="h4 mb-3">Download Certificate</h2>
-                <div id="status-t1" class="status-message"></div>
-
-                <div class="mb-3">
-                  <label for="inp-email" class="form-label">Email Address</label>
-                  <input id="inp-email" class="form-control" type="email" placeholder="Enter your email address" autocomplete="off" oninput="lookupAttendee()">
-                </div>
-
-                <div class="mb-3">
-                  <label for="inp-name" class="form-label">Full Name</label>
-                  <input id="inp-name" class="form-control" type="text" readonly>
-                </div>
-
-                <div class="mb-3">
-                  <label for="inp-org" class="form-label">Organization</label>
-                  <input id="inp-org" class="form-control" type="text" readonly>
-                </div>
-
-                <button id="gen-btn" class="btn btn-primary w-100" disabled onclick="generateCert()">Generate PDF Certificate</button>
-                <p class="lookup-note">If a record is not found, check that the email matches the spreadsheet exactly, including any punctuation and domain spelling.</p>
-              </section>
-
-              <aside class="panel summary-panel" aria-labelledby="summary-title">
-                <h2 id="summary-title" class="summary-title">Verified attendee</h2>
-                <p id="summary-empty" class="summary-empty">Enter a registered attendee email to see the matched record here.</p>
-                <div id="summary-list" class="summary-list hidden">
-                  <div class="summary-item">
-                    <span>Email</span>
-                    <strong id="summary-email"></strong>
-                  </div>
-                  <div class="summary-item">
-                    <span>Name</span>
-                    <strong id="summary-name"></strong>
-                  </div>
-                  <div class="summary-item">
-                    <span>Organization</span>
-                    <strong id="summary-org"></strong>
-                  </div>
-                  <div class="summary-item">
-                    <span>Status</span>
-                    <strong>Ready to generate</strong>
-                  </div>
-                </div>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="pg-cert" class="preview-section hidden">
-        <div class="container">
-          <div class="preview-head">
-            <div>
-              <div class="kicker" style="margin-bottom:.85rem;">Certificate preview</div>
-              <h2 style="margin-bottom:.35rem;">Review and download</h2>
-            </div>
-            <div class="preview-actions">
-              <button class="btn btn-secondary" onclick="goToLookup()">Back to lookup</button>
-              <button class="btn btn-primary" onclick="downloadPDF()">Download PDF</button>
-            </div>
-          </div>
-          <div class="canvas-wrap">
-            <canvas id="certCanvas" width="2400" height="1697"></canvas>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-inner">
-          <div>ACM COMPUTE Regional Event 2026 — Indore, India</div>
-          <div><a href="/docs/">Back to Website</a></div>
-        </div>
-      </div>
-    </footer>
+  <div class="maintenance-container">
+    <div class="loader"></div>
+    <br>
+    <div class="kicker">ACM COMPUTE 2026</div>
+    <h1>We are currently performing maintenance.</h1>
+    <p>The registration and certificate portal is temporarily unavailable while we update the system. Please check back shortly.</p>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    let attendeesList = [];
-    let currentRecord = null;
+  <div class="footer-text">
+    ACM COMPUTE Regional Event
+    <span>Indore, Madhya Pradesh, India</span>
+  </div>
 
-    function normalize(value) { return String(value || '').replace(/\s+/g, '').toLowerCase(); }
-    function cleanText(value) { return String(value ?? '').replace(/\s+/g, ' ').trim(); }
-
-    function setStatus(kind, message) {
-      const status = document.getElementById('status-t1');
-      if (!status) return;
-      if (!kind) { status.className = 'status-message'; status.textContent = ''; return; }
-      status.className = `status-message ${kind}`;
-      status.textContent = message;
-    }
-
-    function renderSummary(record) {
-      const empty = document.getElementById('summary-empty');
-      const list  = document.getElementById('summary-list');
-      const email = document.getElementById('summary-email');
-      const name  = document.getElementById('summary-name');
-      const org   = document.getElementById('summary-org');
-      if (!empty || !list || !email || !name || !org) return;
-      if (!record) {
-        empty.classList.remove('hidden'); list.classList.add('hidden');
-        email.textContent = ''; name.textContent = ''; org.textContent = '';
-        return;
-      }
-      empty.classList.add('hidden'); list.classList.remove('hidden');
-      email.textContent = record.email || '—';
-      name.textContent  = record.name  || '—';
-      org.textContent   = record.org   || '—';
-    }
-
-    async function loadData() {
-      try {
-        const response = await fetch('data.xlsx');
-        if (!response.ok) throw new Error('data.xlsx not found');
-        const buffer = await response.arrayBuffer();
-        parseAttendees(buffer);
-      } catch (error) {
-        console.error('Failed to load data.xlsx', error);
-        setStatus('error', 'Attendee data could not be loaded');
-      }
-    }
-
-    function parseAttendees(buffer) {
-      attendeesList = [];
-      if (!window.XLSX) throw new Error('XLSX library not available');
-      const workbook = XLSX.read(buffer, { type: 'array' });
-      workbook.SheetNames.forEach((sheetName) => {
-        const sheet = workbook.Sheets[sheetName];
-        const rows  = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
-        if (!rows.length) return;
-        const headerRowIndex = rows.findIndex((row) => row.some((cell) => String(cell).trim() !== ''));
-        if (headerRowIndex === -1) return;
-        const headerRow = rows[headerRowIndex];
-        const headerMap = {};
-        headerRow.forEach((cell, index) => {
-          const key = String(cell || '').replace(/\s+/g, '').toLowerCase();
-          if (key.includes('email')) headerMap.email = index;
-          if (key.includes('name'))  headerMap.name  = index;
-          if (key.includes('org') || key.includes('instit') || key.includes('affil') || key.includes('company')) headerMap.org = index;
-        });
-        rows.slice(headerRowIndex + 1).forEach((row) => {
-          if (!row || row.every((cell) => String(cell).trim() === '')) return;
-          const email = headerMap.email !== undefined ? cleanText(row[headerMap.email]) : '';
-          const name  = headerMap.name  !== undefined ? cleanText(row[headerMap.name])  : '';
-          const org   = headerMap.org   !== undefined ? cleanText(row[headerMap.org])   : '';
-          if (!email && !name) return;
-          attendeesList.push({ email, name, org });
-        });
-      });
-    }
-
-    function lookupAttendee() {
-      const raw      = document.getElementById('inp-email').value.trim();
-      const inputName= document.getElementById('inp-name');
-      const inputOrg = document.getElementById('inp-org');
-      const button   = document.getElementById('gen-btn');
-      if (!raw) {
-        setStatus('', ''); inputName.value = ''; inputOrg.value = '';
-        button.disabled = true; currentRecord = null; renderSummary(null); return;
-      }
-      const key     = normalize(raw);
-      const matches = attendeesList.filter((r) => normalize(r.email) === key);
-      if (matches.length >= 1) {
-        const record = matches[0]; currentRecord = record;
-        inputName.value = record.name || ''; inputOrg.value = record.org || '';
-        button.disabled = false; setStatus('ok', 'Verified'); renderSummary(record); return;
-      }
-      currentRecord = null; inputName.value = ''; inputOrg.value = '';
-      button.disabled = true; setStatus('error', 'Email not found in attendee list'); renderSummary(null);
-    }
-
-    function goToLookup() {
-      document.getElementById('pg-cert').classList.add('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function getCertificateId(record) {
-      const base     = String((record.email || record.name || 'attendee')).replace(/[^A-Za-z0-9]/g, '').toUpperCase();
-      const hashSeed = (record.name || '').length + (record.email || '').length + (record.org || '').length;
-      return `CRE-${base.slice(0, 10)}-${String(hashSeed).padStart(4, '0')}`;
-    }
-
-    function loadImage(src) {
-      return new Promise((resolve) => {
-        const image = new Image();
-        image.onload  = () => resolve(image);
-        image.onerror = () => resolve(null);
-        image.src = src;
-      });
-    }
-
-    async function generateCert() {
-      if (!currentRecord) return;
-      const preview = document.getElementById('pg-cert');
-      preview.classList.remove('hidden');
-      preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      const canvas = document.getElementById('certCanvas');
-      const ctx    = canvas.getContext('2d');
-      const W = canvas.width, H = canvas.height;
-
-      const [logoLeft, logoCentre, logoRight, sign1, sign2, sign3] = await Promise.all([
-        loadImage('sig.png'),
-        loadImage('nmimstree.png'),
-        loadImage('acmsig.png'),
-        loadImage('../certificate-main/aj.png'),
-        loadImage('../certificate-main/ss.png'),
-        loadImage('../certificate-main/vk.png')
-      ]);
-
-      renderCertificate(ctx, W, H, currentRecord, { logoLeft, logoCentre, logoRight, sign1, sign2, sign3 });
-    }
-
-    /* ─────────────────────────────────────────────────────────────────────
-       DRAW RECTANGULAR LOGO FRAME
-       x, y = top-left of the box; w, h = outer dimensions
-    ───────────────────────────────────────────────────────────────────── */
-    function drawRectLogoFrame(ctx, img, x, y, w, h, gold, accent) {
-      const pad    = 10;   // space between outer border and inner border
-      const inner  = 6;    // gap between inner border and image area
-      const imgPad = 14;   // padding inside the image cell
-
-      // Outer border
-      ctx.save();
-      ctx.strokeStyle = gold;
-      ctx.lineWidth   = 3.5;
-      ctx.strokeRect(x, y, w, h);
-
-      // Inner border
-      ctx.strokeStyle = accent;
-      ctx.lineWidth   = 1.5;
-      ctx.strokeRect(x + pad, y + pad, w - pad * 2, h - pad * 2);
-
-      // White fill
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillRect(x + pad + inner, y + pad + inner, w - (pad + inner) * 2, h - (pad + inner) * 2);
-
-      // Corner ticks on outer frame
-      const tick = 28;
-      ctx.strokeStyle = accent;
-      ctx.lineWidth   = 2;
-      ctx.lineCap     = 'round';
-      [[x, y], [x + w, y], [x, y + h], [x + w, y + h]].forEach(([cx, cy], i) => {
-        const sx = i % 2 === 0 ? 1 : -1;
-        const sy = i < 2 ? 1 : -1;
-        ctx.beginPath(); ctx.moveTo(cx + sx * 2, cy + sy * (tick + 2)); ctx.lineTo(cx + sx * 2, cy + sy * 2); ctx.lineTo(cx + sx * (tick + 2), cy + sy * 2); ctx.stroke();
-      });
-
-      // Draw image, scaled to fit with padding
-      if (img) {
-        const cellX = x + pad + inner + imgPad;
-        const cellY = y + pad + inner + imgPad;
-        const cellW = w - (pad + inner + imgPad) * 2;
-        const cellH = h - (pad + inner + imgPad) * 2;
-        const scale = Math.min(cellW / img.width, cellH / img.height);
-        const dw = img.width * scale;
-        const dh = img.height * scale;
-        const dx = cellX + (cellW - dw) / 2;
-        const dy = cellY + (cellH - dh) / 2;
-        ctx.drawImage(img, dx, dy, dw, dh);
-      }
-      ctx.restore();
-    }
-
-    /* ─────────────────────────────────────────────────────────────────────
-       RENDER MAIN CERTIFICATE
-    ───────────────────────────────────────────────────────────────────── */
-    function renderCertificate(ctx, W, H, record, assets) {
-      const primaryAccent = '#C45C3E';
-      const secondaryAccent = '#D4AF37'; // Gold
-      const textDark = '#2D2D2D';
-      const textMuted = '#6B6B6B';
-
-      // Background Fill
-      ctx.fillStyle = '#FBF9F8';
-      ctx.fillRect(0, 0, W, H);
-
-      // Outer Border Framework
-      ctx.strokeStyle = secondaryAccent;
-      ctx.lineWidth = 18;
-      ctx.strokeRect(50, 50, W - 100, H - 100);
-      ctx.strokeStyle = primaryAccent;
-      ctx.lineWidth = 4;
-      ctx.strokeRect(75, 75, W - 150, H - 150);
-
-      // Top Logos (Left, Center, Right)
-      const frameW = 320;
-      const frameH = 140;
-      const topY = 140;
-      if (assets.logoLeft) drawRectLogoFrame(ctx, assets.logoLeft, 140, topY, frameW, frameH, secondaryAccent, primaryAccent);
-      if (assets.logoRight) drawRectLogoFrame(ctx, assets.logoRight, W - 140 - frameW, topY, frameW, frameH, secondaryAccent, primaryAccent);
-      
-      if (assets.logoCentre) {
-        const scale = Math.min(360 / assets.logoCentre.width, 180 / assets.logoCentre.height);
-        const dw = assets.logoCentre.width * scale;
-        const dh = assets.logoCentre.height * scale;
-        ctx.drawImage(assets.logoCentre, (W - dw) / 2, topY - 10, dw, dh);
-      }
-
-      // Certificate Typography
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-
-      // Main Header
-      ctx.fillStyle = primaryAccent;
-      ctx.font = '700 130px "Cormorant Garamond"';
-      ctx.fillText('CERTIFICATE', W / 2, 480);
-
-      // Subheader
-      ctx.fillStyle = secondaryAccent;
-      ctx.font = '500 42px "Oswald"';
-      ctx.letterSpacing = '12px';
-      ctx.fillText('OF PARTICIPATION', W / 2, 570);
-      ctx.letterSpacing = '0px'; // reset spacing
-
-      // Presentation Line
-      ctx.fillStyle = textMuted;
-      ctx.font = '400 48px "Outfit"';
-      ctx.fillText('This is proudly presented to', W / 2, 720);
-
-      // Attendee Name
-      ctx.fillStyle = textDark;
-      ctx.font = '700 100px "Cormorant Garamond"';
-      ctx.fillText((record.name || 'Attendee').toUpperCase(), W / 2, 860);
-
-      // Separator Line under Name
-      ctx.beginPath();
-      ctx.moveTo(W / 2 - 450, 920);
-      ctx.lineTo(W / 2 + 450, 920);
-      ctx.strokeStyle = secondaryAccent;
-      ctx.lineWidth = 3;
-      ctx.stroke();
-
-      // Organization text
-      ctx.fillStyle = textMuted;
-      ctx.font = '400 42px "Outfit"';
-      if (record.org) ctx.fillText(`from ${record.org}`, W / 2, 1000);
-
-      // Description Text
-      ctx.fillStyle = textDark;
-      ctx.font = '400 40px "Outfit"';
-      ctx.fillText('for their active participation and contribution in the', W / 2, 1120);
-      ctx.font = '700 40px "Outfit"';
-      ctx.fillText('ACM COMPUTE Regional Event 2026', W / 2, 1180);
-      ctx.font = '400 40px "Outfit"';
-      ctx.fillText('held at Indore, Madhya Pradesh, India.', W / 2, 1240);
-
-      // Signatures Section
-      const sigY = 1480;
-      const sigW = 280;
-
-      function drawSignature(img, x, name, title) {
-        if (img) {
-          const scale = Math.min(sigW / img.width, 110 / img.height);
-          const sw = img.width * scale;
-          const sh = img.height * scale;
-          ctx.drawImage(img, x - sw / 2, sigY - sh - 20, sw, sh);
-        }
-        
-        ctx.beginPath();
-        ctx.moveTo(x - 160, sigY);
-        ctx.lineTo(x + 160, sigY);
-        ctx.strokeStyle = textDark;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        ctx.fillStyle = textDark;
-        ctx.font = '600 32px "Outfit"';
-        ctx.fillText(name, x, sigY + 45);
-        ctx.fillStyle = textMuted;
-        ctx.font = '400 26px "Outfit"';
-        ctx.fillText(title, x, sigY + 85);
-      }
-
-      drawSignature(assets.sign1, W / 2 - 680, 'Dr. A. J.', 'General Chair');
-      drawSignature(assets.sign2, W / 2, 'Dr. S. S.', 'Program Chair');
-      drawSignature(assets.sign3, W / 2 + 680, 'Dr. V. K.', 'Organizing Secretary');
-
-      // Verification ID
-      const certId = getCertificateId(record);
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#999999';
-      ctx.font = '400 22px "Oswald"';
-      ctx.fillText(`ID: ${certId}`, 110, H - 110);
-    }
-
-    /* ─────────────────────────────────────────────────────────────────────
-       DOWNLOAD PDF USING JSPDF
-    ───────────────────────────────────────────────────────────────────── */
-    function downloadPDF() {
-      if (!currentRecord) return;
-      
-      const canvas = document.getElementById('certCanvas');
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      
-      // Setup jsPDF instance in landscape A4 format
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: 'a4' // 297mm x 210mm
-      });
-
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-
-      // Fit canvas image exactly to PDF boundaries
-      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-
-      const cleanName = (currentRecord.name || 'Participant').replace(/[^a-zA-Z0-9]/g, '_');
-      pdf.save(`ACM_Compute_2026_${cleanName}.pdf`);
-    }
-
-    // Initialize app by loading the remote Excel file
-    window.addEventListener('DOMContentLoaded', loadData);
-  </script>
 </body>
-</html>
+</html>x
