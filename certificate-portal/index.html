@@ -21,14 +21,8 @@
       --shadow: 0 28px 80px rgba(45, 45, 45, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-      font-family: "Outfit", system-ui, -apple-system, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; font-family: "Outfit", system-ui, -apple-system, sans-serif; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -46,66 +40,32 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        repeating-linear-gradient(-45deg, transparent, transparent 44px, rgba(196, 92, 62, 0.018) 44px, rgba(196, 92, 62, 0.018) 45px);
+      background: repeating-linear-gradient(-45deg, transparent, transparent 44px, rgba(196, 92, 62, 0.018) 44px, rgba(196, 92, 62, 0.018) 45px);
       z-index: 0;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--text);
-      font-weight: 700;
-      line-height: 1.25;
-      margin-top: 0;
-    }
+    h1, h2, h3, h4, h5, h6 { color: var(--text); font-weight: 700; line-height: 1.25; margin-top: 0; }
 
-    .page-shell {
-      position: relative;
-      z-index: 1;
-    }
+    .page-shell { position: relative; z-index: 1; }
 
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
+      position: sticky; top: 0; z-index: 30;
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
 
     .site-header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1rem 0;
     }
 
-    .site-brand {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      font-size: 0.98rem;
-    }
+    .site-brand { color: var(--text); text-decoration: none; font-weight: 800; letter-spacing: 0.02em; font-size: 0.98rem; }
+    .site-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; margin-left: 1.5rem; font-weight: 500; }
 
-    .site-nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      margin-left: 1.5rem;
-      font-weight: 500;
-    }
+    .hero { padding: 3.5rem 0 1.75rem; }
 
-    .hero {
-      padding: 3.5rem 0 1.75rem;
-    }
-
-    .hero-card {
-      border: 1px solid var(--border);
-      background: #fff;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+    .hero-card { border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
 
     .hero-inner {
       padding: 2.25rem;
@@ -114,323 +74,96 @@
     }
 
     .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.42rem 0.75rem;
-      margin-bottom: 1rem;
-      background: rgba(196, 92, 62, 0.1);
-      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.42rem 0.75rem; margin-bottom: 1rem;
+      background: rgba(196, 92, 62, 0.1); color: var(--accent);
       border: 1px solid rgba(196, 92, 62, 0.18);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
     }
 
-    .hero-title {
-      font-size: clamp(2rem, 4vw, 3.6rem);
-      margin: 0 0 0.85rem;
-      max-width: 14ch;
-    }
-
-    .hero-copy {
-      max-width: 64ch;
-      margin-bottom: 0;
-      color: var(--text-muted);
-      line-height: 1.75;
-      font-size: 1rem;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-
-    .badge-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.65rem 0.85rem;
-      border: 1px solid var(--border);
-      background: var(--bg-subtle);
-      color: var(--text);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
+    .hero-title { font-size: clamp(2rem, 4vw, 3.6rem); margin: 0 0 0.85rem; max-width: 14ch; }
+    .hero-copy { max-width: 64ch; margin-bottom: 0; color: var(--text-muted); line-height: 1.75; font-size: 1rem; }
 
     .portal-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-      gap: 1.5rem;
-      padding: 2rem 2.25rem 2.25rem;
+      gap: 1.5rem; padding: 2rem 2.25rem 2.25rem;
     }
 
-    .panel {
-      border: 1px solid var(--border);
-      background: #fff;
-    }
+    .panel { border: 1px solid var(--border); background: #fff; }
+    .form-panel { padding: 1.75rem; }
+    .summary-panel { padding: 1.75rem; background: linear-gradient(180deg, #fff 0%, #f8f4f1 100%); }
 
-    .form-panel {
-      padding: 1.75rem;
-    }
+    .summary-title { margin: 0 0 0.9rem; color: var(--text-subtle); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 700; }
+    .summary-empty { color: var(--text-muted); font-size: 0.96rem; line-height: 1.7; margin: 0; }
+    .summary-list { display: grid; gap: 0.85rem; }
 
-    .summary-panel {
-      padding: 1.75rem;
-      background: linear-gradient(180deg, #fff 0%, #f8f4f1 100%);
-    }
+    .summary-item { display: flex; flex-direction: column; gap: 0.3rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
+    .summary-item:last-child { padding-bottom: 0; border-bottom: 0; }
+    .summary-item span { color: var(--text-subtle); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .summary-item strong { color: var(--text); font-size: 0.98rem; word-break: break-word; }
 
-    .summary-title {
-      margin: 0 0 0.9rem;
-      color: var(--text-subtle);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      font-weight: 700;
-    }
-
-    .summary-empty {
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .summary-list {
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .summary-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .summary-item:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .summary-item span {
-      color: var(--text-subtle);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-    }
-
-    .summary-item strong {
-      color: var(--text);
-      font-size: 0.98rem;
-      word-break: break-word;
-    }
-
-    .form-label {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-    }
+    .form-label { font-weight: 700; color: var(--text); margin-bottom: 0.5rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.07em; }
 
     .form-control {
-      border: 1px solid var(--border);
-      border-radius: 0;
-      padding: 0.85rem 1rem;
-      font-size: 1rem;
+      border: 1px solid var(--border); border-radius: 0;
+      padding: 0.85rem 1rem; font-size: 1rem;
       transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
     }
 
-    .form-control:focus {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 0 0.2rem rgba(196, 92, 62, 0.08);
-      outline: none;
-    }
-
-    .form-control:disabled,
-    .form-control[readonly] {
-      background-color: var(--bg-subtle);
-      color: var(--text-muted);
-      cursor: not-allowed;
-    }
+    .form-control:focus { border-color: var(--accent); box-shadow: inset 0 0 0 0.2rem rgba(196, 92, 62, 0.08); outline: none; }
+    .form-control:disabled, .form-control[readonly] { background-color: var(--bg-subtle); color: var(--text-muted); cursor: not-allowed; }
 
     .status-message {
-      display: none;
-      margin-bottom: 1rem;
-      padding: 0.9rem 1rem;
-      border-radius: 0;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      display: none; margin-bottom: 1rem; padding: 0.9rem 1rem; border-radius: 0;
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
     }
-
-    .status-message.ok {
-      display: block;
-      color: #2E7D32;
-      background: #EAF6EC;
-      border-left: 4px solid #2E7D32;
-    }
-
-    .status-message.error {
-      display: block;
-      color: #C62828;
-      background: #FFEBEE;
-      border-left: 4px solid #C62828;
-    }
+    .status-message.ok { display: block; color: #2E7D32; background: #EAF6EC; border-left: 4px solid #2E7D32; }
+    .status-message.error { display: block; color: #C62828; background: #FFEBEE; border-left: 4px solid #C62828; }
 
     .btn {
-      border-radius: 0;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.9rem 1.15rem;
+      border-radius: 0; font-size: 0.82rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; padding: 0.9rem 1.15rem;
       transition: transform 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s;
     }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn-primary:hover, .btn-primary:focus { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+    .btn-primary:disabled { background: var(--text-subtle); border-color: var(--text-subtle); opacity: 0.7; transform: none; cursor: not-allowed; }
+    .btn-secondary { background: var(--bg-subtle); border-color: var(--border); color: var(--text); }
+    .btn-secondary:hover, .btn-secondary:focus { background: #ece8e5; border-color: var(--text-subtle); color: var(--text); }
 
-    .btn:hover {
-      transform: translateY(-1px);
-    }
+    .lookup-note { margin: 1rem 0 0; color: var(--text-subtle); font-size: 0.92rem; line-height: 1.6; }
 
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-      color: #fff;
-    }
-
-    .btn-primary:disabled {
-      background: var(--text-subtle);
-      border-color: var(--text-subtle);
-      opacity: 0.7;
-      transform: none;
-      cursor: not-allowed;
-    }
-
-    .btn-secondary {
-      background: var(--bg-subtle);
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover,
-    .btn-secondary:focus {
-      background: #ece8e5;
-      border-color: var(--text-subtle);
-      color: var(--text);
-    }
-
-    .lookup-note {
-      margin: 1rem 0 0;
-      color: var(--text-subtle);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    .preview-section {
-      padding: 0 0 4rem;
-    }
+    .preview-section { padding: 0 0 4rem; }
 
     .preview-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      margin: 0 0 1rem;
+      display: flex; justify-content: space-between; align-items: end;
+      gap: 1.25rem; flex-wrap: wrap; margin: 0 0 1rem;
     }
 
-    .preview-copy {
-      color: var(--text-muted);
-      max-width: 68ch;
-      margin-bottom: 0;
-      line-height: 1.65;
-    }
+    .canvas-wrap { border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
 
-    .canvas-wrap {
-      border: 1px solid var(--border);
-      background: #fff;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+    #certCanvas { width: 100%; height: auto; display: block; }
 
-    #certCanvas {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .preview-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .preview-actions .btn { min-width: 180px; }
 
-    .preview-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .preview-actions .btn {
-      min-width: 180px;
-    }
-
-    .site-footer {
-      border-top: 1px solid var(--border);
-      background: #fff;
-      padding: 1.75rem 0;
-      margin-top: 1rem;
-    }
+    .site-footer { border-top: 1px solid var(--border); background: #fff; padding: 1.75rem 0; margin-top: 1rem; }
 
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      color: var(--text-muted);
-      font-size: 0.875rem;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; flex-wrap: wrap; color: var(--text-muted); font-size: 0.875rem;
     }
+    .footer-inner a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
-    .footer-inner a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
+    .hidden { display: none !important; }
 
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 991px) {
-      .portal-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
+    @media (max-width: 991px) { .portal-grid { grid-template-columns: 1fr; } }
     @media (max-width: 576px) {
-      .hero-inner,
-      .portal-grid,
-      .form-panel,
-      .summary-panel {
-        padding: 1.25rem;
-      }
-
-      .preview-actions .btn {
-        width: 100%;
-      }
-
-      .hero-title {
-        max-width: none;
-      }
+      .hero-inner, .portal-grid, .form-panel, .summary-panel { padding: 1.25rem; }
+      .preview-actions .btn { width: 100%; }
+      .hero-title { max-width: none; }
     }
   </style>
 </head>
@@ -455,12 +188,6 @@
               <div class="kicker">ACM COMPUTE Regional Event 2026</div>
               <h1 class="hero-title">Verify by email. Generate a polished certificate in one step.</h1>
               <p class="hero-copy">Enter the attendee email address from the registration list. The portal will match the record, fill the name and organization automatically, and render the final PDF certificate with the official event artwork and signature layout.</p>
-              <div class="badge-row">
-                <span class="badge-chip">Email lookup</span>
-                <span class="badge-chip">Auto-filled attendee details</span>
-                <span class="badge-chip">Canvas-based PDF</span>
-                <span class="badge-chip">Reference artwork from certificate-main</span>
-              </div>
             </div>
 
             <div class="portal-grid">
@@ -518,16 +245,14 @@
         <div class="container">
           <div class="preview-head">
             <div>
-              <div class="kicker" style="margin-bottom: .85rem;">Certificate preview</div>
-              <h2 style="margin-bottom: .35rem;">Review and download</h2>
-              <p class="preview-copy">The preview below uses the reference logos and signature artwork from <span style="color: var(--accent); font-weight: 600;">certificate-main</span>, but keeps the overall page aligned with the ACM CRE website design.</p>
+              <div class="kicker" style="margin-bottom:.85rem;">Certificate preview</div>
+              <h2 style="margin-bottom:.35rem;">Review and download</h2>
             </div>
             <div class="preview-actions">
               <button class="btn btn-secondary" onclick="goToLookup()">Back to lookup</button>
               <button class="btn btn-primary" onclick="downloadPDF()">Download PDF</button>
             </div>
           </div>
-
           <div class="canvas-wrap">
             <canvas id="certCanvas" width="2400" height="1697"></canvas>
           </div>
@@ -538,7 +263,7 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-inner">
-          <div>ACM COMPUTE Regional Event 2026 - Indore, India</div>
+          <div>ACM COMPUTE Regional Event 2026 — Indore, India</div>
           <div><a href="/docs/">Back to Website</a></div>
         </div>
       </div>
@@ -550,48 +275,33 @@
     let attendeesList = [];
     let currentRecord = null;
 
-    function normalize(value) {
-      return String(value || '').replace(/\s+/g, '').toLowerCase();
-    }
-
-    function cleanText(value) {
-      return String(value ?? '').replace(/\s+/g, ' ').trim();
-    }
+    function normalize(value) { return String(value || '').replace(/\s+/g, '').toLowerCase(); }
+    function cleanText(value) { return String(value ?? '').replace(/\s+/g, ' ').trim(); }
 
     function setStatus(kind, message) {
       const status = document.getElementById('status-t1');
       if (!status) return;
-      if (!kind) {
-        status.className = 'status-message';
-        status.textContent = '';
-        return;
-      }
+      if (!kind) { status.className = 'status-message'; status.textContent = ''; return; }
       status.className = `status-message ${kind}`;
       status.textContent = message;
     }
 
     function renderSummary(record) {
       const empty = document.getElementById('summary-empty');
-      const list = document.getElementById('summary-list');
+      const list  = document.getElementById('summary-list');
       const email = document.getElementById('summary-email');
-      const name = document.getElementById('summary-name');
-      const org = document.getElementById('summary-org');
+      const name  = document.getElementById('summary-name');
+      const org   = document.getElementById('summary-org');
       if (!empty || !list || !email || !name || !org) return;
-
       if (!record) {
-        empty.classList.remove('hidden');
-        list.classList.add('hidden');
-        email.textContent = '';
-        name.textContent = '';
-        org.textContent = '';
+        empty.classList.remove('hidden'); list.classList.add('hidden');
+        email.textContent = ''; name.textContent = ''; org.textContent = '';
         return;
       }
-
-      empty.classList.add('hidden');
-      list.classList.remove('hidden');
+      empty.classList.add('hidden'); list.classList.remove('hidden');
       email.textContent = record.email || '—';
-      name.textContent = record.name || '—';
-      org.textContent = record.org || '—';
+      name.textContent  = record.name  || '—';
+      org.textContent   = record.org   || '—';
     }
 
     async function loadData() {
@@ -609,30 +319,26 @@
     function parseAttendees(buffer) {
       attendeesList = [];
       if (!window.XLSX) throw new Error('XLSX library not available');
-
       const workbook = XLSX.read(buffer, { type: 'array' });
       workbook.SheetNames.forEach((sheetName) => {
         const sheet = workbook.Sheets[sheetName];
-        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+        const rows  = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
         if (!rows.length) return;
-
         const headerRowIndex = rows.findIndex((row) => row.some((cell) => String(cell).trim() !== ''));
         if (headerRowIndex === -1) return;
-
         const headerRow = rows[headerRowIndex];
         const headerMap = {};
         headerRow.forEach((cell, index) => {
           const key = String(cell || '').replace(/\s+/g, '').toLowerCase();
           if (key.includes('email')) headerMap.email = index;
-          if (key.includes('name')) headerMap.name = index;
+          if (key.includes('name'))  headerMap.name  = index;
           if (key.includes('org') || key.includes('instit') || key.includes('affil') || key.includes('company')) headerMap.org = index;
         });
-
         rows.slice(headerRowIndex + 1).forEach((row) => {
           if (!row || row.every((cell) => String(cell).trim() === '')) return;
           const email = headerMap.email !== undefined ? cleanText(row[headerMap.email]) : '';
-          const name = headerMap.name !== undefined ? cleanText(row[headerMap.name]) : '';
-          const org = headerMap.org !== undefined ? cleanText(row[headerMap.org]) : '';
+          const name  = headerMap.name  !== undefined ? cleanText(row[headerMap.name])  : '';
+          const org   = headerMap.org   !== undefined ? cleanText(row[headerMap.org])   : '';
           if (!email && !name) return;
           attendeesList.push({ email, name, org });
         });
@@ -640,52 +346,23 @@
     }
 
     function lookupAttendee() {
-      const raw = document.getElementById('inp-email').value.trim();
-      const inputName = document.getElementById('inp-name');
+      const raw      = document.getElementById('inp-email').value.trim();
+      const inputName= document.getElementById('inp-name');
       const inputOrg = document.getElementById('inp-org');
-      const button = document.getElementById('gen-btn');
-
+      const button   = document.getElementById('gen-btn');
       if (!raw) {
-        setStatus('', '');
-        inputName.value = '';
-        inputOrg.value = '';
-        button.disabled = true;
-        currentRecord = null;
-        renderSummary(null);
-        return;
+        setStatus('', ''); inputName.value = ''; inputOrg.value = '';
+        button.disabled = true; currentRecord = null; renderSummary(null); return;
       }
-
-      const key = normalize(raw);
-      const matches = attendeesList.filter((record) => normalize(record.email) === key);
-
-      if (matches.length === 1) {
-        const record = matches[0];
-        currentRecord = record;
-        inputName.value = record.name || '';
-        inputOrg.value = record.org || '';
-        button.disabled = false;
-        setStatus('ok', 'Verified');
-        renderSummary(record);
-        return;
+      const key     = normalize(raw);
+      const matches = attendeesList.filter((r) => normalize(r.email) === key);
+      if (matches.length >= 1) {
+        const record = matches[0]; currentRecord = record;
+        inputName.value = record.name || ''; inputOrg.value = record.org || '';
+        button.disabled = false; setStatus('ok', 'Verified'); renderSummary(record); return;
       }
-
-      if (matches.length > 1) {
-        const record = matches[0];
-        currentRecord = record;
-        inputName.value = record.name || '';
-        inputOrg.value = record.org || '';
-        button.disabled = false;
-        setStatus('ok', 'Verified');
-        renderSummary(record);
-        return;
-      }
-
-      currentRecord = null;
-      inputName.value = '';
-      inputOrg.value = '';
-      button.disabled = true;
-      setStatus('error', 'Email not found in attendee list');
-      renderSummary(null);
+      currentRecord = null; inputName.value = ''; inputOrg.value = '';
+      button.disabled = true; setStatus('error', 'Email not found in attendee list'); renderSummary(null);
     }
 
     function goToLookup() {
@@ -694,24 +371,15 @@
     }
 
     function getCertificateId(record) {
-      const base = String((record.email || record.name || 'attendee')).replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+      const base     = String((record.email || record.name || 'attendee')).replace(/[^A-Za-z0-9]/g, '').toUpperCase();
       const hashSeed = (record.name || '').length + (record.email || '').length + (record.org || '').length;
       return `CRE-${base.slice(0, 10)}-${String(hashSeed).padStart(4, '0')}`;
-    }
-
-    function fitImageContain(ctx, img, x, y, width, height) {
-      const scale = Math.min(width / img.width, height / img.height);
-      const drawWidth = img.width * scale;
-      const drawHeight = img.height * scale;
-      const drawX = x + (width - drawWidth) / 2;
-      const drawY = y + (height - drawHeight) / 2;
-      ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
     }
 
     function loadImage(src) {
       return new Promise((resolve) => {
         const image = new Image();
-        image.onload = () => resolve(image);
+        image.onload  = () => resolve(image);
         image.onerror = () => resolve(null);
         image.src = src;
       });
@@ -724,199 +392,57 @@
       preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       const canvas = document.getElementById('certCanvas');
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
+      const ctx    = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
 
-      const assetPaths = {
-        logo1: '../certificate-main/nmims.png',
-        logo2: '../certificate-main/springer.png',
-        sign1: '../certificate-main/aj.png',
-        sign2: '../certificate-main/ss.png',
-        sign3: '../certificate-main/vk.png'
-      };
-
-      const [logo1, logo2, sign1, sign2, sign3] = await Promise.all([
-        loadImage(assetPaths.logo1),
-        loadImage(assetPaths.logo2),
-        loadImage(assetPaths.sign1),
-        loadImage(assetPaths.sign2),
-        loadImage(assetPaths.sign3)
+      const [logoLeft, logoCentre, logoRight, sign1, sign2, sign3] = await Promise.all([
+        loadImage('sig.png'),
+        loadImage('nmimstree.png'),
+        loadImage('acmsig.png'),
+        loadImage('../certificate-main/aj.png'),
+        loadImage('../certificate-main/ss.png'),
+        loadImage('../certificate-main/vk.png')
       ]);
 
-      renderCertificate(ctx, width, height, currentRecord, { logo1, logo2, sign1, sign2, sign3 });
+      renderCertificate(ctx, W, H, currentRecord, { logoLeft, logoCentre, logoRight, sign1, sign2, sign3 });
     }
 
-    function renderCertificate(ctx, width, height, record, assets) {
-      const accent = '#C45C3E';
-      const soft = '#6B6B6B';
-      const text = '#2D2D2D';
-      const organization = (record.org || '').trim();
-      const certificateId = getCertificateId(record);
+    /* ─────────────────────────────────────────────────────────────────────
+       DRAW RECTANGULAR LOGO FRAME
+       x, y = top-left of the box; w, h = outer dimensions
+    ───────────────────────────────────────────────────────────────────── */
+    function drawRectLogoFrame(ctx, img, x, y, w, h, gold, accent) {
+      const pad    = 10;   // space between outer border and inner border
+      const inner  = 6;    // gap between inner border and image area
+      const imgPad = 14;   // padding inside the image cell
 
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, width, height);
-
+      // Outer border
       ctx.save();
-      ctx.globalAlpha = 0.018;
-      ctx.strokeStyle = '#E1DDD9';
-      ctx.lineWidth = 2;
-      for (let x = -height; x < width + height; x += 80) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x + height, height);
-        ctx.stroke();
-      }
-      ctx.restore();
+      ctx.strokeStyle = gold;
+      ctx.lineWidth   = 3.5;
+      ctx.strokeRect(x, y, w, h);
 
-      const drawCorner = (x, y, flip) => {
-        ctx.save();
-        ctx.translate(x, y);
-        if (flip) ctx.scale(-1, -1);
-        ctx.fillStyle = accent;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(430, 0);
-        ctx.lineTo(0, 255);
-        ctx.closePath();
-        ctx.fill();
-        ctx.restore();
-      };
-      drawCorner(0, 0, false);
-      drawCorner(width, height, true);
-
-      const margin = 56;
+      // Inner border
       ctx.strokeStyle = accent;
-      ctx.lineWidth = 6;
-      ctx.strokeRect(margin, margin, width - margin * 2, height - margin * 2);
-      ctx.strokeStyle = '#E5E5E5';
-      ctx.lineWidth = 1;
-      ctx.strokeRect(margin + 12, margin + 12, width - (margin + 12) * 2, height - (margin + 12) * 2);
+      ctx.lineWidth   = 1.5;
+      ctx.strokeRect(x + pad, y + pad, w - pad * 2, h - pad * 2);
 
-      const logoY = 132;
-      const leftLogoX = width / 2 - 420;
-      const rightLogoX = width / 2 + 280;
+      // White fill
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(x + pad + inner, y + pad + inner, w - (pad + inner) * 2, h - (pad + inner) * 2);
 
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(leftLogoX, logoY, 250, 250);
-      ctx.fillRect(rightLogoX, logoY + 40, 360, 170);
-
-      if (assets.logo1) {
-        fitImageContain(ctx, assets.logo1, leftLogoX, logoY, 250, 250);
-      } else {
-        ctx.fillStyle = soft;
-        ctx.font = '700 54px Outfit';
-        ctx.textAlign = 'center';
-        ctx.fillText('NMIMS', leftLogoX + 125, logoY + 145);
-      }
-
-      if (assets.logo2) {
-        fitImageContain(ctx, assets.logo2, rightLogoX, logoY + 40, 360, 170);
-      } else {
-        ctx.fillStyle = soft;
-        ctx.font = '700 42px Outfit';
-        ctx.textAlign = 'center';
-        ctx.fillText('SPRINGER', rightLogoX + 180, logoY + 140);
-      }
-
-      ctx.textAlign = 'center';
-      ctx.fillStyle = accent;
-      ctx.font = '700 114px Outfit';
-      ctx.fillText('CERTIFICATE', width / 2, 388);
-
-      ctx.fillStyle = text;
-      ctx.font = '500 36px Outfit';
-      ctx.fillText('OF APPRECIATION', width / 2, 448);
-
-      const badgeWidth = 520;
-      const badgeHeight = 60;
-      const badgeY = 510;
-      ctx.fillStyle = accent;
-      ctx.fillRect(width / 2 - badgeWidth / 2, badgeY, badgeWidth, badgeHeight);
-      ctx.fillStyle = '#fff';
-      ctx.font = '600 24px Outfit';
-      ctx.fillText('THIS CERTIFIES THAT', width / 2, badgeY + 40);
-
-      const nameY = 742;
-      ctx.fillStyle = text;
-      ctx.font = '700 84px Outfit';
-      ctx.fillText(record.name || '', width / 2, nameY);
-      ctx.strokeStyle = text;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(width / 2 - 370, nameY + 26);
-      ctx.lineTo(width / 2 + 370, nameY + 26);
-      ctx.stroke();
-
-      if (organization) {
-        ctx.fillStyle = soft;
-        ctx.font = '500 44px Outfit';
-        ctx.fillText(organization, width / 2, nameY + 102);
-      }
-
-      const bodyStart = organization ? nameY + 166 : nameY + 92;
-      ctx.fillStyle = soft;
-      ctx.font = '500 38px Outfit';
-      ctx.fillText('has participated in the', width / 2, bodyStart);
-      ctx.fillText('ACM COMPUTE Regional Event', width / 2, bodyStart + 74);
-      ctx.fillStyle = text;
-      ctx.font = '700 38px Outfit';
-      ctx.fillText('2026 - Indore, India', width / 2, bodyStart + 138);
-
-      const certificateLineY = bodyStart + 202;
-      ctx.strokeStyle = '#D8D0CA';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(width / 2 - 220, certificateLineY);
-      ctx.lineTo(width / 2 + 220, certificateLineY);
-      ctx.stroke();
-      ctx.fillStyle = accent;
-      ctx.font = '600 20px Oswald';
-      ctx.fillText(certificateId, width / 2, certificateLineY + 35);
-
-      const signatureY = height - 220;
-      const signatureSpacing = width * 0.3;
-      const signatures = [
-        { label: 'Advisor', img: assets.sign1 },
-        { label: 'Co-Convener', img: assets.sign2 },
-        { label: 'Coordinator', img: assets.sign3 }
-      ];
-
-      [width / 2 - signatureSpacing, width / 2, width / 2 + signatureSpacing].forEach((x, index) => {
-        const sig = signatures[index];
-        if (sig.img) {
-          const imgWidth = 240;
-          const imgHeight = 90;
-          const imgX = x - imgWidth / 2;
-          const imgY = signatureY - imgHeight - 10;
-          ctx.drawImage(sig.img, imgX, imgY, imgWidth, imgHeight);
-        }
-        ctx.strokeStyle = text;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(x - 150, signatureY);
-        ctx.lineTo(x + 150, signatureY);
-        ctx.stroke();
-        ctx.fillStyle = text;
-        ctx.font = '600 28px Outfit';
-        ctx.fillText(sig.label, x, signatureY + 40);
-        ctx.fillStyle = soft;
-        ctx.font = '500 18px Outfit';
-        ctx.fillText('SIGNATORY', x, signatureY + 66);
+      // Corner ticks on outer frame
+      const tick = 28;
+      ctx.strokeStyle = accent;
+      ctx.lineWidth   = 2;
+      ctx.lineCap     = 'round';
+      [[x, y], [x + w, y], [x, y + h], [x + w, y + h]].forEach(([cx, cy], i) => {
+        const sx = i % 2 === 0 ? 1 : -1;
+        const sy = i < 2 ? 1 : -1;
+        ctx.beginPath(); ctx.moveTo(cx + sx * 2, cy + sy * (tick + 2)); ctx.lineTo(cx + sx * 2, cy + sy * 2); ctx.lineTo(cx + sx * (tick + 2), cy + sy * 2); ctx.stroke();
       });
-    }
 
-    function downloadPDF() {
-      if (!currentRecord) return;
-      const { jsPDF } = window.jspdf;
-      const canvas = document.getElementById('certCanvas');
-      const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-      pdf.addImage(canvas.toDataURL('image/png', 1.0), 'PNG', 0, 0, 297, 210, undefined, 'FAST');
-      pdf.save(`CRE_Certificate_${String(currentRecord.name || 'attendee').replace(/\s+/g, '_')}.pdf`);
-    }
-
-    window.addEventListener('load', loadData);
-  </script>
-</body>
-</html>
+      // Draw image, scaled to fit with padding
+      if (img) {
+        const cellX = x + pad + inner + imgPad;
+        const cellY =
